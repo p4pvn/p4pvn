@@ -1,3 +1,3 @@
 - 👋 Hi, I’m @p4pvn
-- 👀 I’m interested in Blockchain, Cloud, and Javascript.
-- 🌱 I’m currently learning Javascript.
+- 👀 I’m interested in Blockchain, Cloud, and Networking.
+- 🌱 I’m currently learning python.
