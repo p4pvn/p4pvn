@@ -1,3 +1,3 @@
 - Hi, I’m @p4pvn
 - I’m DevOps Engineer at TCS.
-- Currently working on AWS, Jenkins, Kubernetes and Docker.
+- Currently working on AWS, Jenkins, Kubernetes, Docker and Terraform.
