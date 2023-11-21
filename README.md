@@ -1,3 +1,4 @@
 - Hi, I’m @p4pvn
-- I’m DevOps Engineer at TCS.
+- I’m DevOps Engineer
 - Currently working on AWS, Jenkins, Kubernetes, Docker and Terraform.
+- Learning prometheus and grafana
