@@ -1,4 +1,1 @@
-- Hi, I’m @p4pvn
-- I’m DevOps Engineer
-- Currently working on AWS, Azure, Jenkins, Docker, Kubernetes, Terraform and Ansible.
-- Learning monitoring tools like prometheus and grafana.
+
