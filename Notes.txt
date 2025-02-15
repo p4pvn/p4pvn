@@ -1,0 +1,2 @@
+Docker:
+docker's alpine based images like busybox gives you default crontab for 15mins , daily, hourly, monthly, weekly. so you can keep that in mind while writing/config dockerfile
