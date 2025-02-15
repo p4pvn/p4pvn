@@ -743,9 +743,7 @@ TTL stands for "Time to Live" and represents the maximum number of hops (routers
 
 [March 2024]
 
-ssh-keygen will generate public (~/.ssh/id_rsa) and private key in (~/.ssh/id_rsa.pvt)
-
-config files are stored in /etc/../*.conf
+config files are usually stored in /etc/../*.conf
 
 > dev/null      output will be suppressed and discarded.
 2>&1
@@ -791,7 +789,7 @@ ipcs -l
 check semaphore limit on Linux
 
 /etc/logrotate.conf
-log rotation configuration file to remove old logs o scheduled basis.
+log rotation configuration file to remove old logs on scheduled basis.
 
 [April 2024]:
 
@@ -918,7 +916,8 @@ command will show you command path where it is stored. /usr/bin/
 
 vmstat command will show you virtual machine statistics:
 
-%steal in cpu : <insert full explanation>
+%steal in cpu : it shows you cpu used by another machine in hypervisor and hence stealed from you by csp.
+hypervisor is added to create many servers from one large single server.
 
 operating system will move inactive pages (blocks of data) from the physical RAM to the swap space. 
 This process is known as paging or swapping out.
@@ -958,7 +957,7 @@ Network File Storage (NFS) is a type of storage system that allows multiple user
 
 
 main_function () {
------------commands---------
+-----------script---------
 }
 
 main_function 2>&1 >> $LOGDIR/mongodbbackuptoblob_$TIME.log
@@ -1005,8 +1004,8 @@ if loop options:
 
 File Existence:
 -e file : Checks if the file exists (regardless of type).
--f file : Checks if the file is a regular file.
--d file : Checks if the file is a directory.
+-f file : Checks if the argument is a regular file.
+-d file : Checks if the argument is a directory.
 -h file or -L file : Checks if the file is a symbolic link.
 -b file : Checks if the file is a block device.
 -c file : Checks if the file is a character device.
@@ -1028,7 +1027,7 @@ File Characteristics:
 File Comparison:
 file1 -nt file2 : Checks if file1 is newer than file2.
 file1 -ot file2 : Checks if file1 is older than file2.
-file1 -ef file2 : Checks if file1 and file2 refer to the same inode.
+file1 -ef file2 : Checks if file1 and file2 refer to the same inode(metadata).
 
 String Tests:
 Equality:
@@ -1109,12 +1108,8 @@ time command in Linux is used to measure and display the time taken to execute a
 
 Single Sign-On (SSO) is an authentication process that allows a user to access multiple applications or systems with a single set of login credentials.
 
-ssh-keygen: command will generate private and public key.
-Public key is used to encrypt data that only the corresponding private key can decrypt.
-Private key is used to decrypt data that was encrypted with the corresponding public key.
-
 cmd in dockerfile:
-CMD ["executable", "param1", "param2"]
+CMD ["binary executable", "argument1", "argument2"]
 
 Artifacts are the output files produced by the build process.
 bash script is a specific type of shell script that is written for the Bash (Bourne Again SHell) interpreter.
@@ -1153,27 +1148,6 @@ batch file(.bat or .cmd) is shell script(.sh) file for windows.
 /var/spool directory in Linux is used to store files that are waiting to be processed by some system service or daemon.
 
 [September 2024]
-
-keyless connection between 2 servers:
-1: Generate an SSH Key Pair
-2. ~/.ssh/id_rsa
-3. Copy the SSH Public Key to the Remote Server(~/.ssh/authorized_keys): ssh-copy-id -i ~/.ssh/id_rsa.pub user@remote_server_ip
-4. same steps for other server if you want to create connection both ways.
-5. generate public key and store it in ~/.ssh/authorized_keys of remote server.
-
-ssh-keygen: command will generate private and public key.
-Public key is used to encrypt data that only the corresponding private key can decrypt.
-Private key is used to decrypt data that was encrypted with the corresponding public key.
-
-authorized_keys: Stores public keys of the devices that are allowed to access your account.
-known_hosts: Keeps fingerprints of remote servers you’ve connected to.
-known_hosts.old: A backup of the known_hosts file.
-
-ssh-keygen -t rsa -b 2048 -m PEM -f ~/my-aws-key.pem
-it will generate pvt (pem) keys and pub keys in home directory.
-put pub keys in ~/.ssh/authorized_keys in order to allow logins from this pub key
-
-
 
 rpm, yum, and dnf:
 1. RPM (Red Hat Package Manager):It does not resolve dependencies automatically. You need to manually install all required dependencies.
