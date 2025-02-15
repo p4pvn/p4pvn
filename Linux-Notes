@@ -1,6 +1,672 @@
+Linux File System:
+Root directory (/): This is the top-level directory in the file system hierarchy. All other directories and files are organized under the root directory.
+/bin directory: Contains essential binary executable files used by all users.
+/etc directory: Holds system-wide configuration files.
+/home directory: Home directories for regular users.
+/usr directory: Contains user-readable data, applications, and libraries.
+/var directory: Holds variable data like logs, databases, and temporary files.
+
+Reboot command:
+reboot
+systemct reboot
+shutdown -r 5:30 (schedule reboot ,24hr clock type)
+shutdown -r +15 (schedule reboot after 15 min)
+shutdown -c (cancel shutdown)
+shutdown -r now (reboot right now)
+
+shutdown commands:
+systemctl poweroff
+poweroff
+
+Run levels: These are numbered states that determine the system's operational mode and the services or processes that are running.
+
+init 0 (shutdown)
+init 1 (single-user mode or maintenance mode)
+init 2 (Multi-User Mode without N/W)
+init 3 (Multi-User Mode with Networking(allow multiple user login)) - default/standard - fully functional
+init 4 (Unused or Custom Configurations)
+init 5 (GUI)
+init 6 (force reboot)
+
+shutdown -h 5:30 (scheduled)
+[ -h for shutdown and -r for reboot ]
+
+5. FILE HIERARCHY:
+Root directory - /
+sub directory - root boot etc bin sbin dev tmp lib lib64 (total 19)
+root ~/- home directory
+boot - booting file store
+etc - system confg file
+bin - commands store
+sbin - command store which is used by user
+tmp - to store temporary data
+dev - store external files like PD data
+home - home directory for users
+lib - store library for 32 bit
+lib64 - store library 64 bits
+opt - install 3d party software
+proc - process information store
+mnt - store mounting info
+run - run media devices
+usr - store user documentation (help,)
+
+command syntax in linux:
+command option argument
+
+commands:
+pwd -present working directory
+cd -change directory 
+cd /tmp -change dire. to tmp
+cd /home/pawan -cd to home and pawan folder
+cd -  -prev working directory
+cd ../..  -2 step backword
+
+6. LS COMMANDS: will show folder and files in directory
+ls  -list for current location
+ls /tmp  -list for tmp
+ls /tmp
+
+lsusb  -list of usb devices connected to system
+
+7. Touch command for file creation
+ touch /tmp/idn.txt would create file in tmp named idn.txt
+
+man command for manual/guide to particular command:
+man cat   -it will show you manual to cat command
+cat --help   -it will help you with given command
+
+ip address         - will show the IP Address.
+curl ifconfig.me   -will show public IP
+
+8.Mkdir for folder creation
+  mkdir full form is make directory
+mkdir /tmp/pawan{1..5}    -will create 5 folders in tmp.
+mkdir "pawan pawan"   -if there is space, use ""
+mkdir -p /parent/directory     -it will create parent directories if doesn't exist
+mkdir -m 755 pawan        -it will set permission/mode as 755 to pawan.
+
+mkdir -p -m 755 /path/to/new/dire     -it will create parent directory and set permission/mode as well.
+rmdir (remove directory) used for remove/delete directory.
+
+9. cat command to read file
+cat pawan.txt    -will display the content of pawan.txt
+cat pawan.txt pavan.txt    -will display content of pawan.txt and then pavan.txt
+cat >pawan.txt      -will create pawan.txt and write in file then :wq! to save it
+cat pawan.txt pavan.txt >combined.txt    -will combine content of pawan and pavan, and will save it to combined.txt
+cat >>pawan.txt       -will add more data in pawan.txt
+cat -n pawan.txt        -will show data in numberline.
+tac for inverse data (line by line)
+nl pawan.txt to read file
+
+10. use ; for multiple commands at once
+cd tmp ; mkdir pawan ; pwd
+
+pipe command |
+command 1 | command 2              -It serves output of command 1 to input for command 2.
+grep "pawan" tmp.txt | wc -l       -It will search for "pawan" in tmp.txt and will give input to wc -l which will count and print no. of lines.
+
+Redirection (> & >>) allow you to redirect the standard output (stdout) of a command to a file instead of displaying it on the terminal.
+ls > file_list.txt     -file_list will be created and output of "ls" will be written in "file_list"
+ls >> file_list.txt    -It will append/add output of "ls" in existing file "file_list"
+
+Input Redirection (<):
+This allows you to take input from a file instead of the keyboard.
+Example: command < file.txt
+mkdir < pawan.txt       #it will make file name based on content of pawan.txt
+
+here documents(<<):  Provides a way to pass multiple lines of input to a command.
+cat << EOF
+Line 1
+Line 2
+EOF
+
+/dev/null:  A special file that discards data written to it. Useful for suppressing output.
+Example: command >/dev/null
+
+redirect output and error to seperate files:
+command >output.txt 2>error.txt    -if command gives op, it will be saved in output.txt, and if error then error.txt
+
+
+wc command: word count
+wc -l file.txt    -it will count number of lines in file.txt
+wc -w file.txt    -it will count number of words in file.txt
+wc -c file.txt    -it will count number of characters in file.txt
+
+alias: you can create shortcuts for long commands.
+
+less: It shows you the content stored inside a file, in a nice and interactive UI.
+
+sort: It sorts the content of the file (alphabetically).
+
+uniq: It removes duplicate content/words/lines.
+
+diff: it will show you diff betn two files.
+
+xargs:  It takes input from a pipe or from standard input and converts it into arguments for given command.
+cat todelete.txt | xargs rm       (rm < todelete.txt)
+
+tr command stands for 'translate':
+echo "pavan" | tr 'pavan' 'pawan'    -replaces pavan with pawan  #output: pawan
+echo "Hello World" | tr -d 'l'       -deleting 'l' from stdint   #output: Heo Word
+echo "hello" | tr -c 'a-z' 'A-Z'     -complementing small set by caps  #output: HELLO
+echo "abcdef" | tr 'a-c' 'x-z'       -translate the range of set  #output: xyzdef
+echo "aapple" | tr -s 'a'            -it will squeeze multiple 'a's to one #output: apple
+
+11. head and tail command (To read command)
+head for top to bottom 
+tail for bottom to top
+head -n 15 myfile.txt    -will show you 15 lines only from top
+head -n -15 myfile.txt    - will show you all line except last 15.
+tail -n 15 myfile.txt    -will show you 15 lines only from bottom
+tail -n -15 myfile.txt    - will show you all line except first 15.
+head -n 15 | tail -n 1    - will show you line no. 15 only
+
+#show line number x to y:
+sed -n 'x,yp' abc.txt
+head -n y abc.txt | tail +x
+
+12. echo command for message printing
+echo "hello world of linux" will pass msg
+echo "pawan" >pawan.txt -message will be saved in pawan.txt
+
+13. rm command to remove/delete file
+press Y to yes and N to no.
+rm myfile.txt  -to delete file
+rm -rf pawan   -to delete folder/directory.
+
+rename command to rename the file/folder
+mv oldname newname
+
+14. copy file/folder to file/folder:
+cp abc.txt pawan   #copy abc file to pawan folder
+cp -rvf abc pawan  #copy abc folder to pawan folder
+
+remote copying from server:
+scp for secure copy
+scp options user@host1:source_file_or_directory user@host2:destination
+scp -i key.pem test.txt pawan@10.143.90.2:/home/pawan
+rsync -avz /path/to/local/directory root@IP:/path/to/destination/       (if vpc peering is done, then privateIP if not then publicIP)
+
+copying file from AWS to Local:
+scp -i "C:\Users\PAWAN\Downloads\name2.pem" ubuntu@54.88.229.129:/etc/nginx/nginx.conf "C:\Users\PAWAN\OneDrive\Desktop\nginx.conf"
+
+ln:
+It's used to create links. What is a link? It's like a
+pointer to another file. A file that points to another file.
+2 types of links: HardLinks and Softlinks
+
+1.hardlinks:
+you can't link to directories, and you can't link to external filesystems (disks).
+Any time you edit any of those files, the content will be updated for both.
+> ln recipes.txt newrecipes.txt
+If you delete the original file, the link will still contain the original file content
+A hard link always points a filename to data on a storage device.
+
+2.softlinks:
+They are more powerful as you can link to other filesystems and to directories.
+if original is removed, the link will be broken
+> ln -s recipes.txt newrecipes.txt
+if you delete the original file, the links will be broken
+
+tee command:
+tee command is used to read from standard input and write to both standard output and one or more files simultaneously.
+It is a handy utility for redirecting output to a file while still displaying it on the terminal.
+
+echo "Data" | tee file1.txt file2.txt
+      -It will print the "Data" on terminal as well as save "Data" in given txt files(single or multiple).
+
+echo "New content" | tee -a file_list.txt
+    -you can append to existing file to avoid overwriting. it will add "New content" to file_list.txt
+
+mail command:
+echo "body" | mail -s "subject" "recipient"
+echo "server off" | mail -s "Alert" "pawanugalmugale@gmail.com" 
+      #It will send mail to "pawan" with subject as "alert" and content as "server off".
+
+15. vim is an editor. insert and escape and command mode
+escape mode is default while entering in a file.
+vim /etc/passwd   -to enter file name passwd
+press x           -single letter delete
+4 press x         -4 letter delete
+dw                -delete word
+dd                -delete line
+5 dd              -5 line delete
+shift G           - bottom
+gg                -top
+u                 -undo
+ctrl R            ss-redo
+shift zz          -exit from vim
+i                 -insert mode before cursor
+esc               -exit from insert mode
+a                 -insert mode after cursor
+o                 -insert mode blank line below
+shift o           -insert mode blank line above
+shift :           -command mode
+shift : !         -command mode like terminal
+:wq!              -exit
+:q!               -exit without saving
+
+sed command in linux:
+It is used for text manipulation and useful for performing search-and-replace operations, editing specific lines to text files or input streams
+sed 's/apple/banana/' fruit.txt        -substitute apple with banana                   #it won't change content of file, it will just echo manipulation.
+sed 'error/d' logfile.txt             -delete the word 'error' in logfile
+sed -n '5,10p' documents.txt          -print 5 to 10 lines
+sed -n '15p' docs.txt                 -print line number 15
+
+#show line number x to y:
+sed -n 'x,yp' abc.txt
+head -n y abc.txt | tail +x
+
+16. Grep command (used for searching lines)
+grep options argument filename
+grep -ino "pawan" tmp  -pawan in tmp file (i -ignore case, n  -line number and o -onlyword)
+grep -in '^pawan' tmp   -lines where pawan is at start
+grep -in 'pawan$' tmp   -line with pawan at the end.
+grep -v "error" tmp   -lines where error word is not present.
+grep -r "pattern" .   -it will search for word pattern recursively in pwd.
+grep -A 4 "pawan" tmp      -pawan with next 4 lines After
+grep -B 4 "pawan" tmp      -pawan with before 4 lines
+grep -C 4 "pawan" tmp      -pawan with After & Before 4 lines
+egrep -in "pawan|soni|vijaya" tmp  -enhanced grep for multiple search
+grep -in 'Aug 24 08:51' tmp   -search for logs 24th aug @ 8:51 AM (24hr)
+
+
+Find command: used to search for files and directories within a specified path.
+find [path] [expression]                    #command syntax
+#find file with filename in specified path
+
+find /path/to/search -iname "filename"      #find file with filename with ignoring case-sensitivity
+find . -type f -name "*.txt"                #find all .txt file in current directory
+find /path/to/search -size +1M              #find files with size more than 1MB
+find /path/to/search -user username         #find files created by particular user
+find /path/to/search -perm /o=r             #find files with given permission (read to others)
+find /path/to/search -empty -delete         #find all empty files and delete it.
+
+
+cut command: It is used to extract specific columns or fields from lines of text in a file.
+cut -f 1,3 input.txt          #Extracts fields/columns 1 and 3 from input.txt
+cut -f 2-4 input.txt          # Extracts fields/columns 2 to 4 from input.txt
+cut -d ',' -f 1,3 input.csv   # Extracts fields/columns 1 and 3 from a CSV file using a comma as the delimiter/seperator.
+cut -f 2 --complement -d ',' input.txt       #Display all fields/columns except 2nd field/column.
+
+
+AWK Command: It is also used to extract specific column or field from txt file.
+awk '{print $1, $3}' data.txt                -it will print column 1 and 3 from data.txt
+awk -f ',' '{print $2, $4}' employee.csv     -print 2nd and 4th column seperated by comman in employee.csv
+awk '{total = $2+$3+$4 ; print $1 , total}' grade.txt     -it will collect addition of 2,3,4 columns in total and print 1st column and total value.
+
+cut has delimiter and fields
+awk has field seperator and '{print $1}'
+
+17. Tar comment(for archieving and compressing)
+3 methods in Tar command: gunzip, bunzip, xz
+syntax: tar option archieve-foldername file&folder
+archieve folder pawan:  tar -cf archievepawan pawan
+extract folder archievepawan: tar -xf archievepawan pawan
+compressed using gunzip method: tar -zcf redhat.tar.gz 
+compressed using bunzip method: tar -Jcf redhat.tar.bz2
+compressed using xz method: tar -Jcf redhat.tar.xz
+
+ZIP file:  zip pawan.zip 
+
+tar -cf archive.tar pawan    # Create archive.tar from files pawan
+tar -xf archive.tar          # Extract all files from archive.tar
+
+
+19.  "ps" stands for "process status." It helps users and system administrators to monitor and manage processes.
+ps      -lists processes started by the current user
+ps -e   -Shows information about all running processes
+ps -f   -provides output in full format (process ownership, parent process ID, CPU, memory usage, start time)
+ps -ef  -display information about all running processes in a detailed format
+ps -u <username>     -proccess started by specific user
+ps -p <PID>          -Display this specific process PID
+ps -aux | grep "command"  - your command process
+
+
+20. user management: 
+super user - root (UID -0 and GID -0)
+system user - (UID 1-999 and GID 1-499)
+normal user - profiles (UID 1000-60000 and GID 1000-60000)
+every user has UID and GID.
+
+
+21. UID GID:
+Id pawan  :will give you GID and UID of user pawan
+useradd pawan :new user pawan created
+su pawan :switch user to pawan
+passwd :set passwd for current user
+sudo usermod -aG group1 ${USER} : adding USER to group1 to inherit its permissions.
+
+Creating group and adding user to a group:
+groupadd group1            :group named group1 has been created.
+usermod -aG group1 pawan   :user pawan has been added in group1.
+
+
+24. user management: 
+make user without useradd command
+
+
+
+25. permission management for folder and file:
+read, write and execute
+ r=4     w=2     x=1
+rwx=7
+
+to check file/folder/directory permission: ls -la
+to check storage of file: du -h file.txt
+
+permission syntax: owner group other advanced CL
+ rwx-rx-rx.   :owner rwx, group rx, other rx
+
+
+Default Permission:
+default permission if root user created directory: 755
+default permission if root user created file: 644
+default permission if normal user created directory: 775
+default permission if normal user created file: 664
+
+26. Permission management lab:
+chmod is change mode. it is used to give permission from root to
+other/group.
+chmod u+x /tmp  :added executed permission to user/owner
+chmod o-x /tmp  :removed execute permission for others to file tmp
+chmod g+w /tmp  :write permission given to group to file tmp
+
+chgrp to change group owner of file/directory.
+chgrp staff example.txt                            #changes group owner of the file example.txt
+
+chown to change owner of file/directory.
+chown john:users example.txt                       #changes both, user owner and the group owner of the example.txt
+
+
+27. permission management numeric method:
+R=4 W=2 X=1
+To give permission:
+chmod 777 tmp  -all permission to (owner,group,other) to tmp
+chmod 700 tmp  -owner all and group/other no permission
+
+
+28. umask for default permission:
+root user for default umask = 022
+root user for default umask = 002
+
+default value for directorary = 777 - umask value
+default value for file = 666 - umask value
+
+umask 666  :umask value change to 666 (temporary)
+vim .bashrc and write umask 666 for permanent
+
+29. ACL: access control list
+setfacl -m u:pawan:rwx    -give rwx permission to user pawan
+getfacl pawan             -list all permissions of pawan
+
+31. Partition management:
+Partitions are sections of a hard drive or storage device that are treated as separate units
+
+types of hardisk: SATA and PATA
+SATA:
+PATA:
+
+32. if-then-else-fi loop:
+
+ 1.if [ -e "$filename" ]; then
+   # if file or directory exits
+
+ 2. if [ -f "$filename" ]; then
+   # if file is file (not dire. or special file)
+
+ 3. if [ -d "$directory" ]; then
+   # if directory is a directory
+
+ 4. if [ -s "$file" ];
+   # if filesize is greater than 0
+
+ 5. if [ $num1 -eq $num2 ];   #if number1 is equal to number2
+
+ 6. if [ $num1 -ne $num2 ];   #if num1 is not equal to num2
+
+ 7. if [ num1 -lt num2 ];    #if num1 is less than num2
+
+ 8. if [ num1 -le num2 ];    #if num1 is less than or equal to num2
+
+ 9. if [ num1 -gt num2 ];    #if num1 is greater than num2
+
+ 10.if [ num1 -ge num2 ];    #if num1 is greater than or equal to num2
+
+if [ -z "$string" ];            :if string is zero/empty.
+if [ $? -eq 0 ];                :if above command is successful
+if [ "$(id -u)" -eq 0 ];        :if user has superuser privileges
+if pgrep "$process_name" > /dev/null;    :if process is running
+if [ -w "$file" ];      :if file is writable/readble(-r)/executable(-x)
+
+
+33. Declaring Variables:
+   name = "Pawan"        -Pawan is stored in "$name"
+
+   var=$(ls -la)         #o/p value is stored in $var.
+   
+34. Taking input from user:
+    echo "Write your name here:"
+    read user_name      
+    #name is stored in "$user_name"
+
+
+35. for-do-done loop:
+1.for i in {1..5};    / 1,2,3,4,5
+  do
+    echo "number is $i"
+  done
+2. for i in {1..5}; do
+    for j in {1..5}; do
+        result=$((i * j))
+        echo "$result"
+   done
+
+
+36. while-do-done loop
+1. count = 1
+   while [$count -le 5];
+   do
+     echo "$count"
+     ((count++))
+   done
+2. while true;
+   do
+     echo "Please update the package"
+     sleep 60
+   done
+
+
+37. Case esac Expression:
+
+echo "please choose A or B"
+read choice
+
+case $choice in
+    A|a) echo "You chose option A" ;;
+    B|b) echo "You chose option B" ;;
+      *) echo "Invalid Input" ;;
+esac
+
+
+38. Defining Function:
+
+Function_name() {
+    echo "Add your command here"
+    var=$(ls -la)
+}
+
+#calling your function
+Function_name
+
+39. Accessing inside content:
+packages=("curl" "tree" "package1" "package2" "package3")
+
+echo "${packages[@]}"                  -it will access every content inside packages and will echo it.
+for i in "${packages[@]}"; do
+done
+
+Networking commands:
+1. PING will send ICMP packets to server to test the reachability of a host
+2. netstat will show you network statistics (port listening, active network connections, routing tables)
+   netstat -alp : all listening ports
+3. nslookup  will show you ip addresses of domain
+4. traceroute will show you no. of hops.
+5. ifconfig -a will show you info of NIC n/w interface cards.
+6. ss  (sockets by state) (alt to netstat) Information about TCP, UDP, and Unix domain sockets. 
+       It provides real-time data on network connections, listening ports, and other socket-related information
+   ss -alp : all listening ports
+7. curl used to make http request using command line, support http/s , ftp and many more.
+8. wget is  utility for retrieving files from the internet using various protocols like HTTP, HTTPS, FTP
+9. systemctl will list all the services.
+10. lsb_release -a :will show you the version of linux. (cat /etc/os-release)
+
+11. lsof : will list open files
+    lsof -i :8080        :will show you the port if listening and PID etc
+    lsof -p 8558         : will show detailes of PID 8558
+    lsof -u eugapaw        :list of open file by user eugapaw
+    lsof -c <command>    :list open file by command
+
+12. nmap localhost          :use it to scan for open ports on a machine.
+
+14. sar (System Activity Reporter):  a command-line tool for collecting, reporting, and analyzing system activity.
+
+15. route : this command shows, add, deletes the IP routing table.
+
+16. firewalld: is a dynamic firewall manager that provides a simpler interface for managing firewall rules.
+Both iptables and firewalld aim to control and filter network traffic.
+
+17. tcpdump is a packet analyzer that allows you to capture and analyze network traffic.
+
+18. Check system logs for network-related issues. Common log locations include /var/log/syslog, /var/log/messages, and /var/log/secure.
+
+19. The /etc/fstab file contains information about disk drives and partitions
+
+yum install -y package*  : install package and related files
+yum list installed       :list of packages installed in system
+yum remove package       : remove package
+
+
+40. systemctl: Two commonly used service management systems in Linux are systemd and traditional init scripts.
+                                                                         (load ,   Active,   SUBstate)
+systemctl list-units                    = will make list of all services (loaded, active, active)
+systemctl list-units --state=active     = will make a list of services where state is active.
+systemctl list-units --state=inactive   = will make a list of services where state is inactive
+systemctl status sshd                   = will show you status of service named sshd (includes load, activer, PID, memory, cpu, path)
+systemctl stop sshd                     = will stop the service sshd (inactive) (if you reboot, it will get started)
+systemctl stop sshd ; systemctl disable sshd = will stop and disabled service permanently (if you reboot it will still be disable)
+systemctl start sshd                    = will start the sshd service
+systemctl start sshd ; systemctl enable sshd = will start and enable it permanently (if you reboot it will still be enable)
+systemctl restart sshd                  = will stop and start the service sshd
+systemctl reload sshd                   = it will reload the file, not start/stop/restart hence PID will remain same. 
+                                          (restart or stop/start will give you new PID)
+systemctl mask sshd                    = it will mask the service sshd, means sshd will not get started at any circumstance (not even when start/stop/restart/reboot)
+systemctl unmask sshd                   = it will unmask the previously mask service.
+systemctl poweroff                      = shutdown right now
+journalctl -u servicename               = view service logs
+
+
+41. kill and kill -9
+syntax:
+kill [signal] PID
+
+kill PID: (default -15) Allows the process to handle the signal and perform cleanup operations(gracefully) before termination.
+kill -9 PID: Forcibly terminates the process without allowing it to perform any cleanup.
+killall:  this command kills processes by name rather than by process ID
+
+
+42. rsync (remote synchronization) (ssh protocol)
+
+rsync -avz /path/to/local/directory user@IPaddress:/path/to/destination/
+This command would transfer files from the local source directory to a remote destination directory. (archieve, verbose, zip)
+(if vpc peering is done, then privateIP if not then publicIP)
+
+
+43. Understanding Load Average:
+    Load averages indicates the average number of processes competing for the CPU over different time intervals (1, 5, 15 min)
+
+1-minute load average: Represents the average number of processes in the runnable state over the last 1 minute.
+5-minute load average: Represents the average number of processes in the runnable state over the last 5 minutes.
+15-minute load average: Represents the average number of processes in the runnable state over the last 15 minutes.
+
+A load average of 1.00 on a single-core system means that the system is fully utilized. 
+On a multi-core system, a load average of 4.00 on a 4-core machine, for example, indicates full utilization.
+
+A load average below the number of available CPU cores typically indicates that the system is handling the load well.
+A load average higher than the number of CPU cores suggests a potential performance bottleneck
+
+uptime     :this command provides a quick overview of the system's load averages (1 min, 5 mins, 15 mins)
+w          :w command provides information about the current users and their activities, including load averages.
+
+44. top          : will show you the cpu usage along with process info.
+    htop         : is human friendly top command package.
+    free         : will show you memory total, used, free. (free -m for MiB , -g Gib)
+    df -h        : will show you disk space.
+
+45. Log Files and Their Locations:
+Syslog (System Logs): standard logging protocol: /var/log/syslog
+Kernel logs: messages related to Linux kernel:   /var/log/kern.log
+Authentication logs:  info about user logins:    /var/log/auth.log
+Application Logs: applications logs in dedicated files: /var/log/nginx/access.log
+system boot logs: info about the system boot process:  /var/log/boot.log
+
+46. Installing application from source code:
+install its dependencies as per documentation. (yum packages)
+
+     1. Extract the Source Code: tar -xf 
+     2. change directory: cd
+     3. Check for Installation Instructions: readme/install files
+     4. Configure the Build: ./configure
+     5. build application: make
+     6. install application: sudo make install
+     7. Verify Installation: packagename --version
+
+47. Patching a source file
+cd /path/to/source_code
+patch -p1 < /path/to/patchfile.diff
+
+
+48. Configuring mail on Linux server:
+1. Install Required Packages: 
+Ensure the mailx package is installed on your linux.
+- sudo yum install mailx
+
+2. Configure Postfix to Use SMTP Relay: Edit the Postfix configuration file /etc/postfix/main.cf.
+
+3. sudo nano /etc/postfix/main.cf
+
+4.Add or modify the following lines:
+   relayhost = [smtp.example.com]:587
+   Replace [smtp.example.com]:587 with your SMTP server's hostname and port number. 
+   For Gmail, use [smtp.gmail.com]:587.
+
+5. Create Authentication File: Create a file to store your SMTP authentication credentials.
+
+6.sudo nano /etc/postfix/sasl_passwd
+  Add your SMTP server's details along with your username and password.
+
+7. [smtp.example.com]:587 your_username@gmail.com:your_password
+   Secure Authentication File: Restrict access to the authentication file.
+
+8. sudo chmod 600 /etc/postfix/sasl_passwd
+   Update Postfix Configuration: Update the Postfix lookup table.
+
+9. sudo postmap /etc/postfix/sasl_passwd
+   Reload Postfix Configuration: Apply the changes to Postfix.
+
+10. sudo systemctl reload postfix
+    Test Email Sending: Send a test email to verify the setup.
+
+11. echo "Test email body" | mail -s "Test Email" recipient@example.com
+    Replace recipient@example.com with your email address.
+
+Following these steps should enable your CentOS machine to send emails using your Gmail account or any other SMTP server you've configured.
+
+
 [FEB 2024]
 
-RSH stands for Remote Shell. RSH is not commonly used today due to security concerns, as it transmits data, including passwords, in plaintext.
+RSH stands for Remote Shell. RSH is not commonly used today due to security concerns, as it transmits data, 
+including passwords, in plaintext.
 TCP port 514.
 
 XDMCP stands for X Display Manager Control Protocol. It is a network protocol used for remote graphical login to a computer running the X Window System
