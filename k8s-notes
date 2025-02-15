@@ -1,0 +1,104 @@
+Kubernetes Architecture:
+
+                       Cloud     <---------------- End
+                       DataCenter                  User
+                           |
+                           |
+                       load balancer
+                           |
+                        Node 1
+                           |
+                     Ingress Controller
+                     /               
+                    /                 
+               Service             (Public to Pvt IP)              1. ClusterIP
+                  |              acts as a Load Balancer           2. NodePort
+                  |                                                3. LoadBalancer      4.External Name
+              Deployment      (Provides Rolling Updates)           1. Rolling Deployment
+                  |                                                2. Recreate
+                  |                                                3. Canary Deployment
+              Replica Set        (Multiple Namespaces)             1. Replica Controller
+              /          \        Used to create pods              2. Replica Set
+             /            \                                        3. Deployment
+        Pods               Pods         (Same IP as container)
+ (Pause & C1)         (Pause & C1)      (Stores namespace and IP)         
+          |                  |
+          |                  |
+     Persistent          Persistent                                1. ReadWriteMany
+    Volume claim        Volume Claim                               2. ReadOnlyMany
+          |                |                                       3. ReadWriteOnce
+          |                |
+ __________________________________________
+|               Persistent                 |                       1. Recycle
+|               Volume (PV)                |                       2. Retain
+ __________________________________________
+
+
+2. Config of K8 Cluster:
+    1. KubeAdm (Automated and not customized) / Kubeless
+    2. File Method Config.
+    3. PAAS Services (AKS, EKS, GKE) or openshift (Docker + Kubernetes)
+
+3. More About KubeAdm:
+   1. Run 'KubeAdm init' (master node) so you will get token and CA public key. (you can customized CA Public key).
+   2. Once node gets token & CA Public key (through KubeAdm join link), it will be added as worker node.
+   3. if Token & CA public key gets compromised, you will have to turn off auto-approval to master node.
+   4. you can add worker node without CA public key as well, but it will put some limitations.
+
+Commands of Kubernetes:
+1. PODS:
+    kubectl apply -f <pod-definition.yaml>           -create pods from yml file.
+    kubectl get pods -n <namespace>
+    kubectl describe pod <pod-name>
+    kubectl exec -it <pod-name> /bin/bash
+    kubectl cp <pod-name>:<source-path> <destination-path>
+    kubectl logs <pod-name>
+    kubectl get pods -o wide                         -get pod status and IP
+    
+2. REPLICA SETS:
+    kubectl get rs
+    kubectl describe rs <replica-set-name>
+
+3. DEPLOYMENTS:
+    kubectl create deployment <deployment-name> --image=<image-name>
+    kubectl set image deployment/<deployment-name> <container-name>=<new-image>
+    kubectl rollout undo deployment/<deployment-name>
+    kubectl rollout pause deployment/<deployment-name>
+    kubectl rollout resume deployment/<deployment-name>
+
+4. SERVICES:
+    kubectl create -f <service-definition.yaml>  
+    kubectl expose deployment <deployment-name> --port=<port> --target-port=<target-port> --type=<service-type>
+    kubectl get services
+    kubectl delete service <service-name>
+
+5. INGRESS CONTROLLER:
+    kubectl create -f <ingress-definition.yaml>
+    kubectl get ingress
+    kubectl describe ingress <ingress-name>
+
+6. OTHERS:
+    kubectl get deployment, rs, pod
+    watch kubectl get all -o wide     -complete observation of IP, Port of pod, deployment, services and other components of cluster.
+    # add -n for namespaces
+    #     -c for containername
+    #     -u for username
+    #     -p for port number
+
+
+
+
+
+API Server: Exposes the Kubernetes API, allowing users and controllers to interact with the cluster.
+
+Scheduler: Assigns work (pods) to nodes based on resource requirements and constraints.
+
+Controller: Monitors the cluster state and makes changes to achieve the desired state (e.g., ensuring the specified number of replicas).
+
+Kubelet: Manages the state of individual nodes, ensuring containers are running in a pod.
+
+Docker: A containerization platform used by Kubernetes to run and manage containers.
+
+Kube Proxy: Maintains network rules on nodes, enabling communication between pods and external traffic.
+
+etcd is a distributed key-value store that is used as the primary data store for Kubernetes. 
