@@ -269,6 +269,7 @@ grep -B 4 "pawan" tmp      -pawan with before 4 lines
 grep -C 4 "pawan" tmp      -pawan with After & Before 4 lines
 egrep -in "pawan|soni|vijaya" tmp  -enhanced grep for multiple search
 grep -in 'Aug 24 08:51' tmp   -search for logs 24th aug @ 8:51 AM (24hr)
+grep -oP '.{4}pawan.{4}'    - it will print 4 words before and 4 words after argument.
 
 
 Find command: used to search for files and directories within a specified path.
