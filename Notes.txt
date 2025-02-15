@@ -1,2 +1,7 @@
 Docker:
-docker's alpine based images like busybox gives you default crontab for 15mins , daily, hourly, monthly, weekly. so you can keep that in mind while writing/config dockerfile
+docker's alpine based images like busybox gives you default crontab for 15mins , daily, hourly, monthly, weekly. so you can keep that in mind while writing/config dockerfile.
+you can use docker commit to create docker image from running container, so it will avoid dockerfile approach and can make container ready image.
+go inside container and use env command to check base image and more info about docker.
+you can check bin file of the base image to check which commands are executable and which needs to be added using package manager.
+docker run -d <image_name> tail -f /dev/null
+The tail -f /dev/null command effectively makes the container wait forever without doing anything. This will keep the container running until you stop it manually.
