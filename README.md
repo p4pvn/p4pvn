@@ -11,7 +11,6 @@
 - 🚀 **DevOps Engineer & SRE**, working in US Based Product company and ERP SaaS platforms  
 - 🏗️ Building **scalable, cost-optimized, and automated cloud infrastructures**  
 - 💡 Passionate about **Kubernetes, CI/CD, Observability, and Security**  
-- 🎯 Currently preparing for **AWS Solutions Architect - Associate**  
 - 📖 Always learning new DevOps trends and best practices!  
 
 ---
