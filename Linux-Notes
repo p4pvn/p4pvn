@@ -665,6 +665,21 @@ Following these steps should enable your CentOS machine to send emails using you
 
 49. SSH (Secure Shell:22):
 
+ssh -i ~/.ssh/id_rsa -p 2222 -v ec2-user@192.168.1.100 "uptime"
+-i : for attaching keys
+-p : ssh port of the server
+-v : verbose for debugging
+you can also add command under "command" and it will get executed.
+
+local port forwarding:
+ssh -L 8080:localhost:27017 user@192.168.1.100
+if mongodb is hosted on remote server's 27017 port, by running this command you can access it locally from localhost:8080
+
+remote port forwarding: (not making sense)
+ssh -R 9090:localhost:22 user@192.168.1.100
+If your local machine runs an SSH server on port 22, by running this command, you can SSH into it from the remote server.
+ssh -p 9090 user@localhost
+
 ssh-keygen: command will generate private and public key.
 Public key is used to encrypt data that only the corresponding private key can decrypt.
 Private key is used to decrypt data that was encrypted with the corresponding public key.
