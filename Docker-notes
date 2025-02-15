@@ -1,0 +1,98 @@
+Theory:
+
+
+Dockerfile -----------(build)---------------DockerImage------------------(run)------------------Container
+(txt file which has                     (It is software package that                    (Isolated and executable software  
+config and instruction                   contains code, environment,                    package)
+for creating image)                      lib & dependencies)
+
+
+
+
+
+Image Management:
+
+docker images or docker image ls - List all images on the system.
+docker images ubuntu   - list all ubuntu images on the system.
+docker images ubuntu:latest    - list ubuntu image with latest tag.
+
+docker pull <image_name>    - Download an image from a registry/dockerhub.
+docker pull <image_name>:1.9.2    - Download an image with version 1.9.2 from a registry/dockerhub.
+docker pull registry.eg.com/image:latest     - Download an image with latest tag from registry which is mentioned(registry.eg.com)
+
+docker build -t <image_name> <path_to_dockerfile> - Build an image from a Dockerfile.
+docker build -t imagename .     
+
+docker rmi <image_name> - Remove an image.
+docker rmi <image_name1><image_name2>   - removes multiple images
+
+docker tag <source_image>:<source_tag> <target_image>:<target_tag> - replace sourceimage and sourcetag with new tag and new imagename.
+                                                                     that image now has two tags.
+
+
+
+
+
+Container Management:
+
+docker ps - List running containers.
+docker ps -a - List all containers (including stopped ones)
+
+docker run <options -it -d> <image_name> - Create and start a container from an image.
+docker run -i -t -p 8080:80 --name=container1 openjdk
+
+docker start <container_id/container_name> - Start a stopped container.
+docker stop <container_id/container_name> - Stop a running container.
+docker restart <container_id/container_name> - Restart a container.
+
+docker rm <container_id/container_name> - Remove a stopped container.
+
+docker exec -it <container_id/container_name> <command> - Execute a command in a running container.
+docker exec -it ubuntu /bin/bash
+
+docker logs <container_id/container_name>         - View logs from a container. 
+
+docker cp /tmp/pawan/pa.json pawan:/app/          -copy pa.json from local to container named pawan.
+
+exit  -to exit from container
+
+
+
+Container Networking:
+
+docker network ls - List all networks.
+docker network create <network_name> - Create a network.
+docker network connect <network_name> <container_name> - Connect a container to a network.
+docker network disconnect <network_name> <container_name> - Disconnect a container from a network.
+docker port <container_id/container_name> - List port mappings for a container.
+
+Volume Management:
+
+docker volume ls - List all volumes.
+docker volume create <volume_name> - Create a volume.
+docker volume inspect <volume_name> - Inspect a volume.
+docker volume rm <volume_name> - Remove a volume.
+docker volume prune    - remove all Docker volumes that are not associated with any containers.
+docker run -v <volume_name>:<container_path> <image_name> - Mount a volume in a container.
+
+Docker Compose:
+
+docker-compose up -d   - Start services defined in a Compose file.
+docker-compose down    - Stop and remove containers defined in a Compose file.
+docker-compose ps      - List services in a Compose project.
+
+Registry and Repository:
+
+docker login - Log in to a Docker registry.
+docker push <username>/<image_name>:tag - Push an image to a registry.
+docker pull <image_name> - Pull an image from a registry.
+
+Pushing Image to Dockerhub:
+
+Step 1: tag image with repository:
+docker tag pawanimage:latest pawan/myrepository:latest
+docker tag imagename:latest username/reponame:latest
+
+Step 2: push it to dockerhub:
+docker push pawan/myrepository:latest
+docker push username/reponame:latest
