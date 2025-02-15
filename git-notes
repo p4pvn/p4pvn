@@ -1,0 +1,38 @@
+git init            : git init command is used to create a new Git repository
+git clone repolink  : it will create clone/copy of target repo. in local machine
+git branch          : it will list all branches in repo with * on current branches
+git branch brname   : it will create new branch named brname
+git checkout -b brn : it will create and switch to branch brn
+git diff            : it will the difference or changes you have made in code or script
+git add -A          : it will move changes from working directory to staging area
+git commit -m "msg" : it will take staged snapshot & ready to commits it to project history
+git status          : it will display the status of working directory and stage snapshot
+git log             : it will display the details of change in commited area
+git merge brname    : it will combine changes from brname to your current branch.
+git push            : it will upload content from local repo to remote repo.
+git fetch           : it will fetch changes from remote directory and save it on local in diff branch.
+
+
+3 states of GIT:
+1. Working Directory:
+   This is the actual directory on your local machine where you are working on your files.
+       |
+  git add -A 
+       |
+2. Staging Area:
+   The staging area is a middle ground between your working directory and the Git repository. 
+   Files in the staging area are ready to be committed.
+   You can think of it as a snapshot of changes you want to include in your next commit.
+          |
+      git push origin 
+          |
+3. Committed/Git Repo:
+   The changes in the staging area are saved as a new commit in the Git repository
+   It will create a permanent record of your work.
+
+
+Q. If you have pushed changes to a remote repository and you want to undo those changes:
+
+Undo the Last Commit Locally: git log                         # Check the commit history and find the commit hash you want to revert to
+                              git reset --hard <commit-hash>
+Force Push to Remote: : git push -f origin <branch-name>
