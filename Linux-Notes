@@ -663,6 +663,27 @@ Ensure the mailx package is installed on your linux.
 
 Following these steps should enable your CentOS machine to send emails using your Gmail account or any other SMTP server you've configured.
 
+49. SSH (Secure Shell:22):
+
+ssh-keygen: command will generate private and public key.
+Public key is used to encrypt data that only the corresponding private key can decrypt.
+Private key is used to decrypt data that was encrypted with the corresponding public key.
+
+authorized_keys: Stores public keys of the devices that are allowed to access your account.
+known_hosts: Keeps fingerprints of remote servers you’ve connected to.
+known_hosts.old: A backup of the known_hosts file.
+
+keyless connection between 2 servers:
+1: Generate an SSH Key Pair
+2. ~/.ssh/id_rsa
+3. Copy the SSH Public Key to the Remote Server(~/.ssh/authorized_keys): ssh-copy-id -i ~/.ssh/id_rsa.pub user@remote_server_ip
+4. same steps for other server if you want to create connection both ways.
+5. generate public key and store it in ~/.ssh/authorized_keys of remote server.
+
+ssh-keygen -t rsa -b 2048 -m PEM -f ~/my-aws-key.pem
+it will generate pvt (pem) keys and pub keys in home directory.
+put pub keys in ~/.ssh/authorized_keys in order to allow logins from this pub key
+
 
 --------------------------------------------------------------------- Additional notes -------------------------------------------------------------------
 
