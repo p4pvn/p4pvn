@@ -1,1 +1,488 @@
+[FEB 2024]
 
+RSH stands for Remote Shell. RSH is not commonly used today due to security concerns, as it transmits data, including passwords, in plaintext.
+TCP port 514.
+
+XDMCP stands for X Display Manager Control Protocol. It is a network protocol used for remote graphical login to a computer running the X Window System
+
+VNC stands for Virtual Network Computing. It's a graphical desktop-sharing system that allows you to remotely control another computer regardless OS.
+
+Mosh, short for "mobile shell," is a remote terminal application that enhances the capabilities of traditional SSH (Secure Shell) for remote access to Unix-like systems.
+
+$1: This is a positional parameter representing the first command-line argument passed to the script or function. If you execute a script with an argument like ./script.sh Alice, where script.sh is the name of the script, then $1 will be replaced by "Alice". If no arguments are provided, $1 will be empty.
+
+"wine" folder typically refers to the directory where Wine, a compatibility layer capable of running Windows applications on Unix-like operating systems such as Linux, is installed.
+
+"arp" command is used to view and manipulate the ARP (Address Resolution Protocol) cache, which maps IP addresses to MAC (Media Access Control) addresses on a local network.
+
+TTL stands for "Time to Live" and represents the maximum number of hops (routers) that the ICMP echo request packet is allowed to traverse before being discarded.
+
+[March 2024]
+
+ssh-keygen will generate public (~/.ssh/id_rsa) and private key in (~/.ssh/id_rsa.pvt)
+
+config files are stored in /etc/../*.conf
+
+> dev/null      output will be suppressed and discarded.
+2>&1
+
+crontab -l : will list scheduled cron jobs
+crontab -e : open vi editor for scheduled cron jobs
+
+
+IP Address Classes:
+Class A: 10.0.0.0 - 10.255.255.255          255.0.0.0/8
+Class B: 172.16.0.0 - 172.31.255.255        255.240.0.0/12
+Class C: 192.168.0.0 - 192.168.255.255      255.255.0.0/16
+
+|| exit 1  :logical OR, if command fails then exit
+
+lscpu
+list no. of cpu cores
+
+create a user and group and add user to group:
+useradd mfg
+groupadd qad
+usermod -aG qad mfg
+
+give sudo rights to user:
+visudo
+
+
+lsblk
+list no. of disks attached.
+you need to create further partition in these disks.
+
+netstat -tuln
+ss -tuln
+displays tcp udp listening ports, show numerical address
+
+Creating a repository files:
+/etc/yum.repos.d/mongodb-org.repo
+
+which git
+This command will display the path to the Git binary (/usr/bin/git)
+
+ipcs -l
+check semaphore limit on Linux
+
+/etc/logrotate.conf
+log rotation configuration file to remove old logs o scheduled basis.
+
+[April 2024]:
+
+To connect to any database you need,
+dbcommand ; ip address      ; port        ; username and password ; DB name
+binary      of machine        where data     of that database       (optional)
+            where db hosted   hosted                                 for r/w
+
+npm - node package manager
+nvm - node version manager 
+
+there's no tool available to rename existing DB in system for mongodb.
+
+tail -f <logfile> for live logs as they come.
+
+List all installed packages: rpm -qa
+
+scp -r username@remote_server_ip:/path/to/save/dump /path/to/local/directory
+remote to local FTP
+scp [options] [source] [destination]
+
+userdel -r pqz
+command to delete user 'pqz' ; -r will remove ~ directory and bash profile files.
+
+mpstat
+Multiprocessor Statistics command ; it will show you cpu %idle %iowait %usr %nice
+
+kill process forcefully:
+kill -9 PID
+kill process gracefully:
+kill PID
+
+du -sh <filename>
+disk usage summary humanreadable of <filename>
+
+truncate -s 0 boot.log
+truncate is used to shrink/extend the file of size.
+here it will shrink the size of boot.log file to 0 byte.
+
+truncate -s 5M /var/log/boot.log
+here it will extend the size of boot.log file to 5MB.
+
+crontab -l command to list crontab scheduled jobs
+crontab -e command to edit crontab scheduled jobs.
+
+to check if command exist or not, check in /usr/bin/ or /usr/local/bin
+
+very secure ftp daemon
+sudo yum install vsftpd
+package you need to have while dealing with ftp.
+
+top command:
+%Cpu(s): 71.2 us, 4.3 sy, 0.0 ni, 23.9 id, 0.4 wa, 0.0 hi, 0.2 si, 0.0 st
+user system nice ideal wait hardware-interrupt software-interrupt stolen
+
+echo "This is the body of the email" | mail -s "Subject of the email" recipient@example.com
+
+routing:
+path based routing: example.com/products ; example.com/about
+host based routing: product.example.com ; about.example.com 
+
+change hostname of machine:
+sudo hostnamectl set-hostname com.qad.qip
+
+configuring email server on Linux:
+install postfix: apt install postfix
+/etc/postfix/main.cf -  relayhost = [smtp.office365.com]:587
+			smtp_tls_security_level = encrypt
+			smtp_sasl_auth_enable = yes
+			smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd
+			smtp_sasl_security_options = noanonymous
+add username and passwd in /etc/postfix/sasl_passwd:
+[smtp.office365.com]:587    <username>:<password>
+give permission: chmod 600 /etc/postfix/sasl_passwd
+update configuration: postmap /etc/postfix/sasl_passwd
+restart to apply changes: systemctl restart postfix
+
+Mail send command: echo "This is a test email" | mail -s "Test Subject" recipient@example.com
+
+Installing mailx
+yum -y update
+yum install -y mailx
+We can now start sending e-mails using
+
+create a symbolic link
+
+ln -s /bin/mailx /bin/email
+###Set an External SMTP Server to Relay E-Mails
+
+vi /etc/mail.rc
+edit
+
+set smtp=smtps://smtp.gmail.com:465
+set smtp-auth=login
+set smtp-auth-user=USERNAME@YOURDOMAIN.COM
+set smtp-auth-password=YOURPASSWORD
+set ssl-verify=ignore
+set nss-config-dir=/etc/pki/nssdb/
+example usage :
+
+echo "Your message" | mail -v -s "Message Subject" email@address
+
+find /path/to/directory -type f -exec du -h {} + | sort -rh | head -n 10
+
+ncmpcpp (NCurses Music Player Client (Plus Plus)) is a feature-rich, ncurses-based client for the Music Player Daemon (MPD).
+
+Monitoring tools: top, htop, iotop, atop, glances
+
+Class A: 10.0.0.0 to 10.255.255.255
+Class B: 172.16.0.0 to 172.31.255.255
+Class C: 192.168.0.0 to 192.168.255.255
+local: 127.0.0.1
+APIPA: 169.254.0.0 to 169.254.255.255
+Broadcast Addresses: 255.255.255.255
+
+ARP requests use broadcasts to discover the MAC address of a device associated with a given IP address.
+
+Firmware enables the hardware to communicate effectively with the higher-level software (like operating systems and applications)
+
+[June 2024]
+
+which <command>
+command will show you command path where it is stored. /usr/bin/
+
+vmstat command will show you virtual machine statistics:
+
+%steal in cpu : <insert full explanation>
+
+operating system will move inactive pages (blocks of data) from the physical RAM to the swap space. 
+This process is known as paging or swapping out.
+
+[Mounting a disk: full process]:
+1. lsblk: list all block devices attached to server with dev/sdX
+2. partition disk: sudo fdisk /dev/sdb         	Type n to create a new partition.
+						Choose p for primary partition.
+						Enter 1 for the first partition number.
+						Choose the default first sector (press Enter).
+						Type +500G to create a partition of 500GB.
+						Type w to write the changes to the disk.
+
+3. format the partitions: sudo mkfs.ext4 /dev/sdb1
+4. Create Mount Points /folders: mkdir mfgpro
+5. mount the partitions: sudo mount /dev/sdb1 /mfgpro
+6. Make the Mounts Persistent (partition auto add after boot), you need to add them in /etc/fstab:
+   6A: get uuid of partitions: blkid /dev/sdb1
+   6B: add it in fstab: <UUID1>  /mfgpro  ext4  defaults  0  2
+7. Verify the Mounts: mount -a ; df -h
+
+https://chatgpt.com/c/11516aae-e840-4494-b713-b3b9b12f5a72
+
+npm install command is used to install all the dependencies listed in your project's package.json file.
+npm fetches these packages from the npm registry.
+dependencies are installed into a directory called node_modules.
+
+Using a process manager like PM2 ensures that your application runs in the background and restarts on failure.
+
+nginx notes:
+sites-available: Contains configuration files for all available sites.
+sites-enabled: Contains symbolic links to the configuration files of enabled sites.
+
+TLS is the successor to SSL, and while the term SSL is still commonly used, most modern secure communications use TLS.
+
+Network File Storage (NFS) is a type of storage system that allows multiple users and systems to share files over a network.
+
+
+main_function () {
+-----------commands---------
+}
+
+main_function 2>&1 >> $LOGDIR/mongodbbackuptoblob_$TIME.log
+it will store standard error (2) and standard output (1) to $LOGDIR/mongodbbackuptoblob_$TIME.log
+
+nload: Another real-time network usage monitor.
+
+lshw: Lists detailed information about the hardware configuration.
+
+nmon: Performance monitoring tool designed for AIX and Linux operating systems.
+
+sar: system activity reporter shows you diff resources (cpu, mem, io) values from 00:00 start of the day within 10 min time interval.
+
+lastlog command reports the most recent login of all users or of a given user.
+
+auditd: Linux Auditing System can track activities performed by users.
+
+
+Create rules to monitor specific activities. For example, to monitor changes in /etc/passwd:
+sudo auditctl -w /etc/passwd -p wa -k passwd_changes
+
+Use ausearch and aureport to view and analyze audit logs:
+sudo ausearch -k passwd_changes
+sudo aureport -f -i
+
+psacct package can be used to monitor user commands
+
+sa: Summarize accounting information.
+lastcomm: Show the last commands executed by users.
+accton: Turn on accounting.
+
+[July]
+
+You can check your DNS settings in the /etc/resolv.conf file.
+
+yum repositories notes:
+
+/etc/yum.repos.d/*.repo
+base url where yum repos are fetched known as mirrorlist.
+
+tracert (trace route) is used to track the path that a packet takes from your computer to a specified destination.
+
+if loop options:
+
+File Existence:
+-e file : Checks if the file exists (regardless of type).
+-f file : Checks if the file is a regular file.
+-d file : Checks if the file is a directory.
+-h file or -L file : Checks if the file is a symbolic link.
+-b file : Checks if the file is a block device.
+-c file : Checks if the file is a character device.
+-p file : Checks if the file is a named pipe.
+-S file : Checks if the file is a socket.
+
+File Permissions
+-r file : Checks if the file is readable.
+-w file : Checks if the file is writable.
+-x file : Checks if the file is executable.
+
+File Characteristics:
+-s file : Checks if the file is not empty.
+-t fd : Checks if the file descriptor fd is open and associated with a terminal.
+-O file : Checks if the file is owned by the effective user ID.
+-G file : Checks if the file is owned by the effective group ID.
+-N file : Checks if the file was modified since it was last read.
+
+File Comparison:
+file1 -nt file2 : Checks if file1 is newer than file2.
+file1 -ot file2 : Checks if file1 is older than file2.
+file1 -ef file2 : Checks if file1 and file2 refer to the same inode.
+
+String Tests:
+Equality:
+str1 == str2 : Checks if two strings are equal.
+str1 != str2 : Checks if two strings are not equal.
+
+Empty/Non-Empty Strings:
+-z string : Checks if the string is empty.
+-n string : Checks if the string is not empty.
+
+Numeric Comparisons:
+Equality and Inequality:
+num1 -eq num2 : Checks if num1 is equal to num2.
+num1 -ne num2 : Checks if num1 is not equal to num2.
+
+Relational Comparisons:
+num1 -gt num2 : Checks if num1 is greater than num2.
+num1 -lt num2 : Checks if num1 is less than num2.
+num1 -ge num2 : Checks if num1 is greater than or equal to num2.
+num1 -le num2 : Checks if num1 is less than or equal to num2.
+
+Logical Operators:
+
+AND
+[ condition1 ] && [ condition2 ]
+[[ condition1 && condition2 ]]
+
+OR
+[ condition1 ] || [ condition2 ]
+[[ condition1 || condition2 ]]
+
+NOT
+! condition
+Compound Conditions
+Grouping Conditions
+[[ condition1 && ( condition2 || condition3 ) ]]
+(( arithmetic_expression ))
+
+Using if with && and || directly:
+if [ condition ] && [ another_condition ]; then
+Exit Status Checks
+Command Success
+
+if command; then : Executes the if block if command returns an exit status of 0 (success).
+Command Failure
+
+if ! command; then : Executes the if block if command returns a non-zero exit status (failure).
+Special Considerations
+Arithmetic Evaluations
+
+[ $(( expression )) -eq 0 ] : Evaluates arithmetic conditions.
+(( expression )) : A more compact way to evaluate arithmetic conditions.
+Advanced Conditional Expressions
+
+[[ ]] : Used for more powerful pattern matching and string comparisons.
+[ ] : The traditional test command (less powerful than [[ ]]).
+
+if [ $? -eq 0 ]; then
+if above command is successful, then exit code would be 0.
+
+./your_script.sh > script_output.log 2> script_error.log
+redirecting standard output logs using >
+redirecting error logs using 2>
+
+Each core is capable of executing its own instructions and performing tasks independently from other cores.
+Each core can also have multiple threads, which are the smallest sequence of programmed instructions that can be managed independently by a scheduler.
+
+available memory includes both the free memory and the reclaimable memory from the cache and buffers.
+
+Blocks have a size of 512 bytes.
+
+OpenSSL can create SSL/TLS certificates, which are used to secure communication between servers and clients (like your browser and a website).
+
+change branch name in git:
+git branch -m old-branch-name new-branch-name
+
+time command in Linux is used to measure and display the time taken to execute a command or a program.
+
+Single Sign-On (SSO) is an authentication process that allows a user to access multiple applications or systems with a single set of login credentials.
+
+ssh-keygen: command will generate private and public key.
+Public key is used to encrypt data that only the corresponding private key can decrypt.
+Private key is used to decrypt data that was encrypted with the corresponding public key.
+
+cmd in dockerfile:
+CMD ["executable", "param1", "param2"]
+
+Artifacts are the output files produced by the build process.
+bash script is a specific type of shell script that is written for the Bash (Bourne Again SHell) interpreter.
+Build: The process of converting source code into a runnable application. It may include compiling code, packaging it, and generating executables.
+Test: The stage where automated tests are run to validate the code’s functionality. This can include unit tests, integration tests, and end-to-end tests.
+Deployment: The process of moving code from a development or testing environment into a production environment where it is available to end-users.
+Artifact: A file or set of files produced during the build process, such as compiled code, documentation, or configuration files.
+ntp: network time protocol: package is essential for synchronizing the system clock of your server or computer with a reliable external time source
+hosts file is a plain text file used by operating systems to map hostnames to IP addresses locally.
+
+Swappiness Value Range: 0 to 100 ; default:60 ; 0 low use of swap space ; 100 high use of swap space.
+core dump is a file that captures the memory contents of a process at a specific point in time, typically when the process has crashed or terminated unexpectedly.
+Disk space refers to the storage capacity available on a server's hard drive (HDD) or solid-state drive (SSD)
+CPU responsible for executing instructions from programs by performing arithmetic and logical operations.
+RAM is a type of volatile memory used to store data that the CPU needs quick access to,  faster than disk, loses data when powered off.
+
+Throttling Resource Usage:
+ionice -c2 -n7 <command>  # Set to best-effort with lowest priority
+cpulimit -l 30 -- <command>
+renice -n 19 -p <PID>  # Change the priority of a running process
+nice -n 19 <command>  # Lower priority (values range from -20 to 19)
+trickle -d 100 -u 50 <command>  # Limit download to 100KB/s and upload to 50KB/s
+ulimit -v <memory_in_kb>  # Limit virtual memory usage
+
+you can also use systemd to configure resource limits for services running on your system.
+/etc/systemd/system/my_service.service
+
+Git rollback to prev version:
+Identify the Commit Hash of the Previous Version: git log
+Check Out the Previous Version: git checkout <commit-hash>
+Reset the Current Branch to the Previous Version: git reset --hard <commit-hash>
+Push the Previous Version to the Repository :git push origin <branch-name> --force
+
+batch file(.bat or .cmd) is shell script(.sh) file for windows.
+
+/var/spool directory in Linux is used to store files that are waiting to be processed by some system service or daemon.
+
+[September 2024]
+
+keyless connection between 2 servers:
+1: Generate an SSH Key Pair
+2. ~/.ssh/id_rsa
+3. Copy the SSH Public Key to the Remote Server(~/.ssh/authorized_keys): ssh-copy-id -i ~/.ssh/id_rsa.pub user@remote_server_ip
+4. same steps for other server if you want to create connection both ways.
+5. generate public key and store it in ~/.ssh/authorized_keys of remote server.
+
+ssh-keygen: command will generate private and public key.
+Public key is used to encrypt data that only the corresponding private key can decrypt.
+Private key is used to decrypt data that was encrypted with the corresponding public key.
+
+authorized_keys: Stores public keys of the devices that are allowed to access your account.
+known_hosts: Keeps fingerprints of remote servers you’ve connected to.
+known_hosts.old: A backup of the known_hosts file.
+
+ssh-keygen -t rsa -b 2048 -m PEM -f ~/my-aws-key.pem
+it will generate pvt (pem) keys and pub keys in home directory.
+put pub keys in ~/.ssh/authorized_keys in order to allow logins from this pub key
+
+
+
+rpm, yum, and dnf:
+1. RPM (Red Hat Package Manager):It does not resolve dependencies automatically. You need to manually install all required dependencies.
+   RHEL, CentOS, and Fedora.
+2. YUM (Yellowdog Updater, Modified): works on top of rpm to automatically resolves and installs dependencies for the package being installed.
+   RHEL, CentOS, and Fedora.
+3. DNF (Dandified YUM): dnf is the next-generation version of yum. same as yum but improved performance, better dependency resolution.
+   dnf uses the libsolv library for faster and more accurate dependency resolution.
+4. apt (advanced package tool): Used in Debian-based distributions like Ubuntu.
+5. Zypper: Used in openSUSE.
+   zypper install <package-name>
+
+Installing application from source code:
+Download the source code, usually a .tar.gz or .tar.bz2
+Extract the archive:
+- tar -xzf <file-name>.tar.gz
+
+go to specified directory:
+- cd <extracted-directory>
+
+"configure" file comes with downloaded source code. Running ./configure checks system if it has required tools and libs needed to build software.
+It sets up a "Makefile" (used by make command) with the right paths & config. for your system.
+- ./configure
+
+make compiles the source code into executable files. make command takes the instructions from the Makefile and starts building (compiling) the software.
+converts human-readable source code (like .c or .cpp files) into machine-readable code (binaries).
+- make
+
+Installs the compiled software system-wide.
+- sudo make install
+
+
+disabling root login on Linux:
+1. Open the SSH configuration file:
+2. Find the line PermitRootLogin says: PermitRootLogin no
+3. systemctl restart sshd
