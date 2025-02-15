@@ -680,6 +680,25 @@ ssh -R 9090:localhost:22 user@192.168.1.100
 If your local machine runs an SSH server on port 22, by running this command, you can SSH into it from the remote server.
 ssh -p 9090 user@localhost
 
+SOCKS Proxy:
+ssh -D 9090 -N -q user@remote-server.com
+
+Your connection appears as if it's coming from the remote server ; bypasses restricted sites on network; acts as VPN/proxy.
+-D 9090 → Creates a SOCKS proxy on local port 9090.
+-N → No remote command execution, just keep the tunnel open.
+-q → Quiet mode (suppresses messages).
+
+SSH Config file: 
+1. open ~/.ssh/config and add details:
+
+Host myserver
+    HostName 192.168.1.100
+    User username
+    Port 2222
+    IdentityFile ~/.ssh/id_rsa
+
+Now connect machine with only: ssh myserver
+
 ssh-keygen: command will generate private and public key.
 Public key is used to encrypt data that only the corresponding private key can decrypt.
 Private key is used to decrypt data that was encrypted with the corresponding public key.
