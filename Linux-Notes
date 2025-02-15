@@ -664,7 +664,7 @@ Ensure the mailx package is installed on your linux.
 Following these steps should enable your CentOS machine to send emails using your Gmail account or any other SMTP server you've configured.
 
 
-[FEB 2024]
+--------------------------------------------------------------------- Additional notes -------------------------------------------------------------------
 
 RSH stands for Remote Shell. RSH is not commonly used today due to security concerns, as it transmits data, 
 including passwords, in plaintext.
@@ -676,9 +676,11 @@ VNC stands for Virtual Network Computing. It's a graphical desktop-sharing syste
 
 Mosh, short for "mobile shell," is a remote terminal application that enhances the capabilities of traditional SSH (Secure Shell) for remote access to Unix-like systems.
 
-$1: This is a positional parameter representing the first command-line argument passed to the script or function. If you execute a script with an argument like ./script.sh Alice, where script.sh is the name of the script, then $1 will be replaced by "Alice". If no arguments are provided, $1 will be empty.
+$1: This is a positional parameter representing the first command-line argument passed to the script or function. 
+If you execute a script with an argument like ./script.sh Alice, where script.sh is the name of the script, 
+then $1 will be replaced by "Alice". If no arguments are provided, $1 will be empty.
 
-"wine" folder typically refers to the directory where Wine, a compatibility layer capable of running Windows applications on Unix-like operating systems such as Linux, is installed.
+"wine" is a compatibility layer capable of running Windows applications on Unix-like operating systems such as Linux.
 
 "arp" command is used to view and manipulate the ARP (Address Resolution Protocol) cache, which maps IP addresses to MAC (Media Access Control) addresses on a local network.
 
