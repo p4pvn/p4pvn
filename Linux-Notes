@@ -626,15 +626,30 @@ Application Logs: applications logs in dedicated files: /var/log/nginx/access.lo
 system boot logs: info about the system boot process:  /var/log/boot.log
 
 46. Installing application from source code:
-install its dependencies as per documentation. (yum packages)
+install its dependencies as per documentation.
 
-     1. Extract the Source Code: tar -xf 
-     2. change directory: cd
-     3. Check for Installation Instructions: readme/install files
-     4. Configure the Build: ./configure
-     5. build application: make
-     6. install application: sudo make install
-     7. Verify Installation: packagename --version
+Installing application from source code:
+Download the source code, usually a .tar.gz or .tar.bz2
+1. Extract the archive:
+- tar -xzf <file-name>.tar.gz
+
+2. go to specified directory:
+- cd <extracted-directory>
+
+3. Check for Installation Instructions: readme/install files
+
+4. "configure" file comes with downloaded source code. Running ./configure checks system if it has required tools and libs needed to build software.
+It sets up a "Makefile" (used by make command) with the right paths & config. for your system.
+- ./configure
+
+5. make compiles the source code into executable files. make command takes the instructions from the Makefile and starts building (compiling) the software.
+converts human-readable source code (like .c or .cpp files) into machine-readable code (binaries).
+- make
+
+6. Installs the compiled software system-wide.
+- sudo make install
+
+7. package name --version 
 
 47. Patching a source file
 cd /path/to/source_code
