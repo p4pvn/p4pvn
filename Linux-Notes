@@ -195,14 +195,14 @@ It's used to create links. What is a link? It's like a
 pointer to another file. A file that points to another file.
 2 types of links: HardLinks and Softlinks
 
-1.hardlinks:
+1.hardlinks: (it points to hardware data)
 you can't link to directories, and you can't link to external filesystems (disks).
 Any time you edit any of those files, the content will be updated for both.
 > ln recipes.txt newrecipes.txt
 If you delete the original file, the link will still contain the original file content
 A hard link always points a filename to data on a storage device.
 
-2.softlinks:
+2.softlinks: (it's like shortcuts to original file like windows)
 They are more powerful as you can link to other filesystems and to directories.
 if original is removed, the link will be broken
 > ln -s recipes.txt newrecipes.txt
