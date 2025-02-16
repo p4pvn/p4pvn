@@ -333,6 +333,8 @@ every user has UID and GID.
 
 21. UID GID:
 Id pawan  :will give you GID and UID of user pawan
+
+User management:
 useradd pawan :new user pawan created
 su pawan :switch user to pawan
 passwd :set passwd for current user
@@ -342,11 +344,8 @@ Creating group and adding user to a group:
 groupadd group1            :group named group1 has been created.
 usermod -aG group1 pawan   :user pawan has been added in group1.
 
-
-24. user management: 
-make user without useradd command
-
-
+userdel -r pawan
+command to delete user 'pqz' ; -r will remove ~ directory and bash profile files.
 
 25. permission management for folder and file:
 read, write and execute
@@ -528,7 +527,7 @@ Networking commands:
     lsof -u eugapaw        :list of open file by user eugapaw
     lsof -c <command>    :list open file by command
 
-12. nmap localhost          :use it to scan for open ports on a machine.
+12. nmap localhost: use it to scan for open ports on a machine.
 
 14. sar (System Activity Reporter):  a command-line tool for collecting, reporting, and analyzing system activity.
 
@@ -547,6 +546,16 @@ yum install -y package*  : install package and related files
 yum list installed       :list of packages installed in system
 yum remove package       : remove package
 
+rpm, yum, and dnf:
+1. RPM (Red Hat Package Manager): It does not resolve dependencies automatically. You need to manually install all required dependencies.
+   RHEL, CentOS, and Fedora.
+2. YUM (Yellowdog Updater, Modified): works on top of rpm to automatically resolves and installs dependencies for the package being installed.
+   RHEL, CentOS, and Fedora.
+3. DNF (Dandified YUM): dnf is the next-generation version of yum. same as yum but improved performance, better dependency resolution.
+   dnf uses the libsolv library for faster and more accurate dependency resolution.
+4. apt (advanced package tool): Used in Debian-based distributions like Ubuntu.
+5. Zypper: Used in openSUSE.
+   zypper install <package-name> 
 
 40. systemctl: Two commonly used service management systems in Linux are systemd and traditional init scripts.
                                                                          (load ,   Active,   SUBstate)
@@ -603,6 +612,10 @@ w          :w command provides information about the current users and their act
     htop         : is human friendly top command package.
     free         : will show you memory total, used, free. (free -m for MiB , -g Gib)
     df -h        : will show you disk space.
+
+top command:
+%Cpu(s): 71.2 us, 4.3 sy, 0.0 ni, 23.9 id, 0.4 wa, 0.0 hi, 0.2 si, 0.0 st
+user system nice idle wait hardware-interrupt software-interrupt stolen
 
 45. Log Files and Their Locations:
 Syslog (System Logs): standard logging protocol: /var/log/syslog
@@ -716,8 +729,29 @@ keyless connection between 2 servers:
 
 ssh-keygen -t rsa -b 2048 -m PEM -f ~/my-aws-key.pem
 it will generate pvt (pem) keys and pub keys in home directory.
-put pub keys in ~/.ssh/authorized_keys in order to allow logins from this pub key
+put pub keys in ~/.ssh/authorized_keys to allow logins from this pub key.
 
+disabling root login on Linux:
+1. Open the SSH configuration file:
+2. Find the line PermitRootLogin says: PermitRootLogin no
+3. systemctl restart sshd
+
+50. [Mounting a disk: full process]:
+1. lsblk: list all block devices attached to server with dev/sdX
+2. partition disk: sudo fdisk /dev/sdb         	Type n to create a new partition.
+						Choose p for primary partition.
+						Enter 1 for the first partition number.
+						Choose the default first sector (press Enter).
+						Type +500G to create a partition of 500GB.
+						Type w to write the changes to the disk.
+
+3. format the partitions: sudo mkfs.ext4 /dev/sdb1
+4. Create Mount Points /folders: mkdir mfgpro
+5. mount the partitions: sudo mount /dev/sdb1 /mfgpro
+6. Make the Mounts Persistent (partition auto add after boot), you need to add them in /etc/fstab:
+   6A: get uuid of partitions: blkid /dev/sdb1
+   6B: add it in fstab: <UUID1>  /mfgpro  ext4  defaults  0  2
+7. Verify the Mounts: mount -a ; df -h
 
 --------------------------------------------------------------------- Additional notes -------------------------------------------------------------------
 
@@ -769,7 +803,6 @@ usermod -aG qad mfg
 
 give sudo rights to user:
 visudo
-
 
 lsblk
 list no. of disks attached.
@@ -1143,7 +1176,7 @@ Check Out the Previous Version: git checkout <commit-hash>
 Reset the Current Branch to the Previous Version: git reset --hard <commit-hash>
 Push the Previous Version to the Repository :git push origin <branch-name> --force
 
-batch file(.bat or .cmd) is shell script(.sh) file for windows.
+batch file(.bat or .cmd) is equivalent to shell script(.sh) file for windows.
 
 /var/spool directory in Linux is used to store files that are waiting to be processed by some system service or daemon.
 
