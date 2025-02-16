@@ -296,7 +296,7 @@ awk '{print $1, $3}' data.txt                -it will print column 1 and 3 from 
 awk -f ',' '{print $2, $4}' employee.csv     -print 2nd and 4th column seperated by comman in employee.csv
 awk '{total = $2+$3+$4 ; print $1 , total}' grade.txt     -it will collect addition of 2,3,4 columns in total and print 1st column and total value.
 
-cut has delimiter and fields
+cut has delimiter and fields (df).
 awk has field seperator and '{print $1}'
 
 17. Tar comment(for archieving and compressing)
@@ -402,6 +402,7 @@ getfacl pawan             -list all permissions of pawan
 
 31. Partition management:
 Partitions are sections of a hard drive or storage device that are treated as separate units
+go to #50.
 
 types of hardisk: SATA and PATA
 SATA:
@@ -442,14 +443,12 @@ if [ -w "$file" ];      :if file is writable/readble(-r)/executable(-x)
 
 33. Declaring Variables:
    name = "Pawan"        -Pawan is stored in "$name"
-
    var=$(ls -la)         #o/p value is stored in $var.
    
 34. Taking input from user:
     echo "Write your name here:"
     read user_name      
     #name is stored in "$user_name"
-
 
 35. for-do-done loop:
 1.for i in {1..5};    / 1,2,3,4,5
@@ -461,7 +460,6 @@ if [ -w "$file" ];      :if file is writable/readble(-r)/executable(-x)
         result=$((i * j))
         echo "$result"
    done
-
 
 36. while-do-done loop
 1. count = 1
@@ -616,6 +614,9 @@ w          :w command provides information about the current users and their act
 top command:
 %Cpu(s): 71.2 us, 4.3 sy, 0.0 ni, 23.9 id, 0.4 wa, 0.0 hi, 0.2 si, 0.0 st
 user system nice idle wait hardware-interrupt software-interrupt stolen
+
+%steal in cpu : it shows you cpu used by another machine in hypervisor and hence stealed from you by CSP.
+hypervisor is added to create many servers from one large single server.
 
 45. Log Files and Their Locations:
 Syslog (System Logs): standard logging protocol: /var/log/syslog
