@@ -1197,39 +1197,3 @@ batch file(.bat or .cmd) is equivalent to shell script(.sh) file for windows.
 /var/spool directory in Linux is used to store files that are waiting to be processed by some system service or daemon.
 
 [September 2024]
-
-rpm, yum, and dnf:
-1. RPM (Red Hat Package Manager):It does not resolve dependencies automatically. You need to manually install all required dependencies.
-   RHEL, CentOS, and Fedora.
-2. YUM (Yellowdog Updater, Modified): works on top of rpm to automatically resolves and installs dependencies for the package being installed.
-   RHEL, CentOS, and Fedora.
-3. DNF (Dandified YUM): dnf is the next-generation version of yum. same as yum but improved performance, better dependency resolution.
-   dnf uses the libsolv library for faster and more accurate dependency resolution.
-4. apt (advanced package tool): Used in Debian-based distributions like Ubuntu.
-5. Zypper: Used in openSUSE.
-   zypper install <package-name>
-
-Installing application from source code:
-Download the source code, usually a .tar.gz or .tar.bz2
-Extract the archive:
-- tar -xzf <file-name>.tar.gz
-
-go to specified directory:
-- cd <extracted-directory>
-
-"configure" file comes with downloaded source code. Running ./configure checks system if it has required tools and libs needed to build software.
-It sets up a "Makefile" (used by make command) with the right paths & config. for your system.
-- ./configure
-
-make compiles the source code into executable files. make command takes the instructions from the Makefile and starts building (compiling) the software.
-converts human-readable source code (like .c or .cpp files) into machine-readable code (binaries).
-- make
-
-Installs the compiled software system-wide.
-- sudo make install
-
-
-disabling root login on Linux:
-1. Open the SSH configuration file:
-2. Find the line PermitRootLogin says: PermitRootLogin no
-3. systemctl restart sshd
