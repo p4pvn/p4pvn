@@ -63,7 +63,7 @@ Commands of Kubernetes:
     kubectl apply -f <pod-definition.yaml>           -create pods from yml file.
     kubectl get pods -n <namespace>
     kubectl describe pod <pod-name>
-    kubectl exec -it <pod-name> /bin/bash
+    kubectl exec -it <pod-name> -- /bin/sh
     kubectl cp <pod-name>:<source-path> <destination-path>
     kubectl logs <pod-name>
     kubectl get pods -o wide                         -get pod status and IP
