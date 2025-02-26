@@ -2,9 +2,10 @@ Kubernetes Architecture:
 
                        Cloud     <---------------- End
                        DataCenter                  User
+                      (DNS: domain to public IP)
                            |
                            |
-                       load balancer
+                      load balancer (external)
                            |
                         Node 1
                            |
@@ -13,10 +14,10 @@ Kubernetes Architecture:
                     /                 
                Service             (Public to Pvt IP)              1. ClusterIP
                   |              acts as a Load Balancer           2. NodePort
-                  |                                                3. LoadBalancer      4.External Name
+                  |                                                3. LoadBalancer      4. External Name
               Deployment      (Provides Rolling Updates)           1. Rolling Deployment
                   |                                                2. Recreate
-                  |                                                3. Canary Deployment
+                  |                                                3. Canary Deployment (blue/green deployment)
               Replica Set        (Multiple Namespaces)             1. Replica Controller
               /          \        Used to create pods              2. Replica Set
              /            \                                        3. Deployment
@@ -38,6 +39,18 @@ Kubernetes Architecture:
     1. KubeAdm (Automated and not customized) / Kubeless
     2. File Method Config.
     3. PAAS Services (AKS, EKS, GKE) or openshift (Docker + Kubernetes)
+
+Connecting to k8s cluster:
+Pre-requisites: kubectl installed, aws (access, secret key)
+1. Make an entry in "C:\Users\pqz\.ssh\config" with appropriate IP and domain pvt keys and user.
+2. open cmd: ssh -D 8081 -N qad-bastion-sand
+3. open cmd: set aws variables from aws resource manager.
+4. aws eks update-kubeconfig --name microservices-sandbox --region us-east-2
+   kubectl config use-context arn:aws:eks:us-east-2:891377266553:cluster/microservices-sandbox
+5. set HTTPS_PROXY=socks5://localhost:8081
+6. kubectl get deployments -n sandbox
+   you're now connected to k8s cluster.
+
 
 3. More About KubeAdm:
    1. Run 'KubeAdm init' (master node) so you will get token and CA public key. (you can customized CA Public key).
