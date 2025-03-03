@@ -105,8 +105,9 @@ kubectl get jobs,cj -n sandbox
 kubectl -n sandbox create job --from cronjob.batch/batch-jobs-opensearch-remove-old-messages manual-batch-jobs-opensearch-remove-old-messages
 
 
-
-
+------------------------------ kubernetes architecture------------------------------------------
+https://chatgpt.com/c/67c5dc26-9abc-8012-8236-00fa9ce3ab35
+kubernetes architecture overview
 
 API Server: Exposes the Kubernetes API, allowing users and controllers to interact with the cluster.
 
