@@ -98,6 +98,12 @@ Commands of Kubernetes:
     #     -u for username
     #     -p for port number
 
+7. Jobs, cronjobs [Batch Jobs]:
+kubectl get jobs,cj -n sandbox
+
+# Manually trigger or create jobs from existing cronjob:
+kubectl -n sandbox create job --from cronjob.batch/batch-jobs-opensearch-remove-old-messages manual-batch-jobs-opensearch-remove-old-messages
+
 
 
 
