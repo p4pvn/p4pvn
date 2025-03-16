@@ -181,6 +181,9 @@ mv oldname newname
 cp abc.txt pawan   #copy abc file to pawan folder
 cp -rvf abc pawan  #copy abc folder to pawan folder
 
+cp also means overwrite:
+cp abc.txt xyz.txt        #it will completely remove the content of xyz and replace it w abc.
+
 remote copying from server:
 scp for secure copy
 scp options user@host1:source_file_or_directory user@host2:destination
