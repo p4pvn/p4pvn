@@ -445,7 +445,7 @@ if [ -w "$file" ];      :if file is writable/readble(-r)/executable(-x)
 
 
 33. Declaring Variables:
-   name = "Pawan"        -Pawan is stored in "$name"
+   name="Pawan"        -Pawan is stored in "$name" (no space)
    var=$(ls -la)         #o/p value is stored in $var.
    
 34. Taking input from user:
