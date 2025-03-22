@@ -5,3 +5,36 @@ ALB uses host and path-based routing and NLB just route you to any available nod
 It looks at things like hostnames (like www.example.com) or URLs (like /rollercoaster or /waterslides).
 It’s focused on speed and efficiency. It doesn’t care about the details of the request (like which ride or page someone wants). 
 It just sends the request to whichever server (or "node") is available and able to handle it quickly
+
+AWS SAA:
+THINGS YOU NEED TO KNOW:
+whenever cost effectiveness is mentioned, they dont even want a single resource available i.e. they want ecs/fargate and aurora for DB and lambda function
+NO autoscaling or k8s since they require on resource.
+whenever high availability is mentioned, they want autoscaling, multi availabilty zone/region and k8s stuff.
+whenever security is mentioned, aws inspector, guarduty, shield, WAF, firewall manager, 
+
+what is trust policy in aws
+ENI,AWS Shield, AWS Direct connection
+diff DR strategies: pilot light, warm standby w.r.t rto
+RPO and RTO
+burstable instance
+ecs, fargate, aurora
+vpc peering, site-site
+The only way to retrieve instance metadata is to use the link-local address, which is 169.254.169.254.
+all s3 options (remember timings), multipart uploads, 
+sticky session, session affinity, cooldown period, deregistration delay
+ebs w throughput &iops
+dynamodb
+
+
+
+
+
+
+
+
+
+
+
+
+
