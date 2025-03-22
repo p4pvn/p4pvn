@@ -1,17 +1,71 @@
+1. Network Address:
+The network address is the first IP in a subnet, representing the entire network.
+It is used for identification and cannot be assigned to a host.
+Example: For 10.1.9.0/25, the network address is 10.1.9.0.
+
+2. Broadcast Address:
+The broadcast address is the last IP in a subnet.
+It is used to send data to all hosts in the network.
+Example: For 10.1.9.0/25, the broadcast address is 10.1.9.127
+
+3. Subnet Mask:
+A subnet mask defines how many bits are used for the network and how many for hosts.
+In 10.1.9.0/25, the subnet mask is 255.255.255.128, meaning the first 25 bits represent the network, and the last 7 bits are for host IPs.
+
+4. Default Gateway:
+The default gateway is the router's IP address used by devices to communicate outside the local subnet.
+It is usually the first or last usable IP in the range.
+Example: For 10.1.9.0/25, a common default gateway could be 10.1.9.1 or 10.1.9.126.
+
+5. Remote Gateway:
+A remote gateway is used for routing traffic to another network (like connecting to another company network or the internet).
+It could be another router in a different subnet.
+
+6. Subnet Prefix Length:
+The subnet prefix length (like /25) defines how many bits are used for the network.
+The remaining bits determine the number of available hosts.
+Example:
+10.1.9.0/25 → 25 bits for the network, 7 bits for hosts.
+10.1.9.0/24 → 24 bits for the network, 8 bits for hosts (larger subnet).
+
+A. Public and Private IPs:
+Public IPs are routable on the internet (e.g., 8.8.8.8).
+Private IPs are used in internal networks (e.g., 192.168.1.1, 10.0.0.1).
+B. Loopback Address
+127.0.0.1 is the loopback address, used for testing on the local machine.
+C. APIPA (Automatic Private IP Addressing)
+If DHCP fails, Windows assigns an address in the 169.254.x.x range.
+D. Multicast and Broadcast
+Broadcast: 255.255.255.255 (sends data to all devices in a network).
+E. IPv6 Address:
+
+Ethernet address, MAC address, and Physical address all refer to the same thing
+
+
+
 How NAT Works:
-When a device on the internal network wants to access the internet, the NAT device (typically a router or firewall) performs the following steps:
-Outbound Request: A device (say a computer) inside the network sends a request to the internet, such as trying to open a website. The request originates from a private IP address.
-Translation (SNAT): The NAT router replaces the private source IP address in the packet with the public IP address that is configured on the router. If multiple devices are making requests at the same time, the NAT device keeps track of which private IP address and port was used by each request.
+
+When a device on the internal network wants to access the internet, the NAT device (router or firewall) performs the following steps:
+
+Outbound Request: A device (say a computer) inside the network sends a request to the internet, such as trying to open a website. 
+The request originates from a private IP address.
+Translation (SNAT): The NAT router replaces the private source IP address in the packet with the public IP address that is configured on the router. 
+If multiple devices are making requests at the same time, the NAT device keeps track of which private IP address and port was used by each request.
 This translation is known as Source NAT (SNAT).
-In addition to replacing the private IP, the router also often changes the source port number. This helps differentiate between multiple outgoing connections from different devices inside the network but using the same public IP.
+
+In addition to replacing the private IP, the router also often changes the source port number. 
+This helps differentiate between multiple outgoing connections from different devices inside the network but using the same public IP.
+
 Outbound Communication: The request, now with the public IP and a new port, is sent to the destination (e.g., a website's server).
-Inbound Response: When the website responds, it sends the data back to the public IP on the specified port number.
+Inbound Response: When the website responds, it sends the data back to the public IP on the new port number.
 Translation (DNAT): The NAT router receives this response, sees that it's for a specific port and public IP, and looks up the corresponding private IP address and port in its translation table. It then sends the data to the correct private IP (and port) inside your network.
 This translation is known as Destination NAT (DNAT).
 The router uses its translation table to map the public port number back to the private IP address and port that initiated the request.
-Final Delivery: The private device that initially sent the request (like a computer) receives the response as though it was directly communicating with the internet.
+
 Key Concepts:
-Port Address Translation (PAT): This is a form of NAT where multiple private IP addresses share a single public IP address. The router uses different port numbers to keep track of which private IP and port are associated with which external connection. This is often referred to as overloading.
+Port Address Translation (PAT): This is a form of NAT where multiple private IP addresses share a single public IP address.
+The router uses different port numbers to keep track of which private IP and port are associated with which external connection. 
+This is often referred to as overloading.
 NAT Table: The router keeps a table of ongoing connections, including the private IPs, the public IP, and the port numbers used. This table helps it know which incoming response should be forwarded to which internal device.
 Example:
 Imagine you have a private network with the following devices:
@@ -23,6 +77,7 @@ PC1 wants to browse a website: The request from 192.168.1.2 is sent to the NAT r
 PC2 also browses: The request from 192.168.1.3 is similarly sent to the NAT router. The router assigns a different port number (say 12346) to this request, so both PC1 and PC2 can use the same public IP but on different ports.
 The website responds: The response is sent to 203.0.113.1 on ports 12345 and 12346.
 NAT Table Lookup: The router looks up its NAT table, sees that port 12345 corresponds to 192.168.1.2, and port 12346 corresponds to 192.168.1.3. It then forwards the responses to the respective private IP addresses.
+
 In Summary:
 SNAT is used when a device inside your network wants to access the internet, and the NAT router translates the private IP to a public IP.
 DNAT is used when an external server responds, and the NAT router translates the public IP back to the private IP.
