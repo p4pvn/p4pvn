@@ -2,4 +2,6 @@ QAD follows COPE framework for aws architecture.
 https://docs.aws.amazon.com/wellarchitected/latest/operational-excellence-pillar/cloud-operations-and-platform-enablement.html
 
 ALB uses host and path-based routing and NLB just route you to any available nodes that are quickly available.
-
+It looks at things like hostnames (like www.example.com) or URLs (like /rollercoaster or /waterslides).
+It’s focused on speed and efficiency. It doesn’t care about the details of the request (like which ride or page someone wants). 
+It just sends the request to whichever server (or "node") is available and able to handle it quickly
