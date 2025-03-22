@@ -1,8 +1,42 @@
 Boomi basic understanding:
 https://chatgpt.com/share/67de888f-1064-8012-9087-baa318966eb2
 
-Boomi gitlab logic:
+Boomi is an Integration Platform as a Service (iPaaS) that helps organizations connect applications, data, and systems across cloud and on-premises environments. 
+It simplifies integration through a low-code, drag-and-drop interface while allowing automation, API management, and data transformation
 
+Boomi Deployment Models:
+
+1️⃣ Boomi Atom (Single-node, lightweight)
+A single-instance runtime engine that executes integrations.
+Installed on a local server, cloud VM, or private cloud.
+Best for lightweight integrations that don’t need high availability.
+
+2️⃣ Boomi Molecule (Multi-node, scalable)
+A cluster of Boomi Atoms that provides load balancing and failover.
+Used for high availability and larger workloads.
+Requires a shared disk and database for clustering.
+
+3️⃣ Boomi AtomSphere (Fully cloud-managed)
+Boomi's SaaS offering where Dell manages the infrastructure.
+No installation required—fully cloud-based.
+Best for organizations that don’t want to manage infrastructure.
+
+Boomi AtomSphere is a cloud-based iPaaS (Integration Platform as a Service) that provides a GUI for designing, deploying, and managing integrations.
+
+Boomi Atom Worker is a lightweight containerized execution engine that runs Boomi processes within serverless environments like Kubernetes.
+Boomi Atom Worker: A Deep Dive
+Boomi Atom Worker is a containerized execution engine designed for serverless and ephemeral workloads. 
+Unlike Boomi Atom (single-node) and Boomi Molecule (clustered runtime), 
+Atom Workers do not require persistent infrastructure—they run on-demand, execute Boomi processes, and shut down when not needed
+
+How Boomi Atom Worker Works in Kubernetes (EKS Example)
+1️⃣ Boomi Process is Triggered → An event (API call, file upload, message queue, etc.) triggers a Boomi process.
+2️⃣ Kubernetes Pod is Launched → A new Atom Worker container spins up in EKS.
+3️⃣ Worker Executes Integration → The Atom Worker processes the Boomi job (e.g., data transformation, API calls).
+4️⃣ Worker Shuts Down → Once the job is completed, the container is terminated to free resources.
+
+
+Boomi in QIP gitlab logic:
 1️⃣ connector-common
 Likely contains shared utilities and common logic used across multiple Boomi connectors.
 Example: Reusable authentication mechanisms, logging, error handling, or configuration utilities.
