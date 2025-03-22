@@ -1,0 +1,30 @@
+How NAT Works:
+When a device on the internal network wants to access the internet, the NAT device (typically a router or firewall) performs the following steps:
+Outbound Request: A device (say a computer) inside the network sends a request to the internet, such as trying to open a website. The request originates from a private IP address.
+Translation (SNAT): The NAT router replaces the private source IP address in the packet with the public IP address that is configured on the router. If multiple devices are making requests at the same time, the NAT device keeps track of which private IP address and port was used by each request.
+This translation is known as Source NAT (SNAT).
+In addition to replacing the private IP, the router also often changes the source port number. This helps differentiate between multiple outgoing connections from different devices inside the network but using the same public IP.
+Outbound Communication: The request, now with the public IP and a new port, is sent to the destination (e.g., a website's server).
+Inbound Response: When the website responds, it sends the data back to the public IP on the specified port number.
+Translation (DNAT): The NAT router receives this response, sees that it's for a specific port and public IP, and looks up the corresponding private IP address and port in its translation table. It then sends the data to the correct private IP (and port) inside your network.
+This translation is known as Destination NAT (DNAT).
+The router uses its translation table to map the public port number back to the private IP address and port that initiated the request.
+Final Delivery: The private device that initially sent the request (like a computer) receives the response as though it was directly communicating with the internet.
+Key Concepts:
+Port Address Translation (PAT): This is a form of NAT where multiple private IP addresses share a single public IP address. The router uses different port numbers to keep track of which private IP and port are associated with which external connection. This is often referred to as overloading.
+NAT Table: The router keeps a table of ongoing connections, including the private IPs, the public IP, and the port numbers used. This table helps it know which incoming response should be forwarded to which internal device.
+Example:
+Imagine you have a private network with the following devices:
+PC1: 192.168.1.2
+PC2: 192.168.1.3
+Router (NAT device): 203.0.113.1 (Public IP)
+Here’s how NAT handles outgoing and incoming traffic:
+PC1 wants to browse a website: The request from 192.168.1.2 is sent to the NAT router. The router replaces the source IP (192.168.1.2) with its public IP (203.0.113.1), assigns a port number (say 12345), and sends the request to the website's server.
+PC2 also browses: The request from 192.168.1.3 is similarly sent to the NAT router. The router assigns a different port number (say 12346) to this request, so both PC1 and PC2 can use the same public IP but on different ports.
+The website responds: The response is sent to 203.0.113.1 on ports 12345 and 12346.
+NAT Table Lookup: The router looks up its NAT table, sees that port 12345 corresponds to 192.168.1.2, and port 12346 corresponds to 192.168.1.3. It then forwards the responses to the respective private IP addresses.
+In Summary:
+SNAT is used when a device inside your network wants to access the internet, and the NAT router translates the private IP to a public IP.
+DNAT is used when an external server responds, and the NAT router translates the public IP back to the private IP.
+PAT allows multiple devices to share a single public IP by differentiating their sessions based on port numbers.
+This setup ensures that your internal devices can access the internet and, if configured, receive responses, all while maintaining security by hiding the internal private IPs.
