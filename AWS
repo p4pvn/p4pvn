@@ -1,2 +1,5 @@
 QAD follows COPE framework for aws architecture.
 https://docs.aws.amazon.com/wellarchitected/latest/operational-excellence-pillar/cloud-operations-and-platform-enablement.html
+
+ALB uses host and path-based routing and NLB just route you to any available nodes that are quickly available.
+
