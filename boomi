@@ -1,2 +1,39 @@
 Boomi basic understanding:
 https://chatgpt.com/share/67de888f-1064-8012-9087-baa318966eb2
+
+Boomi gitlab logic:
+
+1️⃣ connector-common
+Likely contains shared utilities and common logic used across multiple Boomi connectors.
+Example: Reusable authentication mechanisms, logging, error handling, or configuration utilities.
+Used as a dependency in other connector projects.
+🔹 DevOps Relevance: If you manage CI/CD, you might need to version this repo properly to avoid breaking dependencies.
+
+2️⃣ connector-pom
+Appears to be a Maven Parent POM repository for connectors.
+Contains a pom.xml that defines shared dependencies, plugins, and build settings for all connector-related projects.
+Acts as a centralized dependency manager for Boomi connector repositories.
+🔹 DevOps Relevance: Likely used in GitLab CI pipelines to ensure all connector builds follow a common configuration.
+
+3️⃣ erp-connector
+Most likely a Boomi connector specifically for ERP systems (e.g., SAP, NetSuite, Oracle ERP, QAD ERP).
+Contains integration logic to fetch/send data between Boomi and ERP applications.
+Could support API calls, file transfers, or message-based integrations for ERP systems.
+🔹 DevOps Relevance: Requires testing in different environments (QA, Prod, Sandbox) to ensure ERP integrations work correctly.
+
+4️⃣ platform-connector
+Possibly a connector for Boomi Platform services (e.g., API Management, Master Data Hub, Flow).
+Could interact with Boomi’s internal APIs for monitoring, orchestration, or deployments.
+🔹 DevOps Relevance: Might be used for managing Boomi infrastructure, such as deploying integrations or fetching execution logs.
+
+5️⃣ tracer-connector
+Likely a logging/debugging tool for Boomi integrations.
+Could be used to trace transactions, debug errors, or collect execution metrics.
+Might integrate with Datadog, ELK, OpenSearch, or other monitoring tools.
+🔹 DevOps Relevance: If integrated with Datadog, you might need to set up log forwarding or alerts for failures.
+
+Final Thoughts
+connector-common & connector-pom → Shared resources for all connectors.
+erp-connector → Specific ERP integrations.
+platform-connector → Boomi platform-level integrations.
+tracer-connector → Debugging/logging tool.
