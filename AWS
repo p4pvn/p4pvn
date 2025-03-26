@@ -29,6 +29,18 @@ dynamodb
 
 
 
+########################################################### AWS Notes ########################################################################
+
+Fargate is more similar to Kubernetes than Docker because both Fargate and Kubernetes are container orchestration systems.
+
+ECS is more similar to Docker in the sense that Docker is the containerization technology, 
+and ECS is an orchestration platform that manages and runs Docker containers at scale. 
+ECS allows you to deploy, manage, and scale Docker containers across multiple servers (EC2 instances).
+
+AWS Lambda is a service that lets you run code without having to manage servers. 
+It automatically runs your code in response to events, such as uploading a file to S3, updating a database, or receiving an HTTP request.
+it's helpful for doing automated tasks / event driven tasks without having your own infra. 
+it is aws native hence support s3 events, dynamodb events (CRUD), sns, sqs, cloudwatch, cloudformation, rds events, etc.
 
 
 
