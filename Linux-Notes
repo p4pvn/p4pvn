@@ -126,6 +126,13 @@ Example: command >/dev/null
 redirect output and error to seperate files:
 command >output.txt 2>error.txt    -if command gives op, it will be saved in output.txt, and if error then error.txt
 
+Shell Expansion: (diff betn "" and '')
+1. name="DevOps"
+echo '$name'   # Outputs: $name (no expansion)
+2. name="DevOps"
+echo "Hello $name"   # Outputs: Hello DevOps
+
+double quotes do shell expansion while single quotes doesnt do shell expansion and take values as literal. (avoid single quotes mostly)
 
 wc command: word count
 wc -l file.txt    -it will count number of lines in file.txt
