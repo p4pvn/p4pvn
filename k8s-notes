@@ -124,44 +124,37 @@ Kube Proxy: Maintains network rules on nodes, enabling communication between pod
 etcd is a distributed key-value store that is used as the primary data store for Kubernetes. 
 
 
+Add notes from this chat:
+https://chatgpt.com/share/67e657fc-4598-8012-a530-b610d3f5e7d0
+
+When you create a pod (kubectl apply -f pod.yaml), Kubernetes:
+Sends the request to the API Server.
+API Server writes pod data to etcd.
+Scheduler and Controller Manager read from etcd.
+Kubelet on the target node pulls the pod spec and starts the pod.
+
+
+
 --------------------------------------------------------------- kubernetes QnA-------------------------------------------------------------------------
 
 What do you know about federated clusters?
 
-Hide Answer
 Federated clusters help manage multiple Kubernetes clusters, which means you can manage multiple Kubernetes clusters in one place. 
 It provides a centralized view of all the clusters, making it easier to manage and scale applications across different clusters.
 
-
-10.
 What is Heapster?
-
-Hide Answer
 A Heapster is a cluster-wide aggregator of data that runs on each node. 
 It is a Kubernetes project that provides a robust monitoring solution for Kubernetes clusters. 
 
-
-
-10.
 What do you know about Headless service?
 
-Hide Answer
 The Headless Service creates a service grouping that does not allocate an IP address or forward traffic.
 
-
-
-20.
 Tell the process name that runs on the Kubernetes master node.
 
-Hide Answer
 The process that runs on the Kubernetes master node is the Kube-apiserver.
 
-
-
-24.
-Explain DaemonSets.
-
-Hide Answer
+Explain DaemonSets:
 The DaemonSets are pod sets that run on a host only one time on a host. And so, they are used attributes of host layers such as -network or network monitoring. 
 DaemonSet enables you to run the Kubernetes pod on the cluster nodes that fulfill certain criteria or requirements. 
 It ensures that some or all nodes run a copy of a pod. 
