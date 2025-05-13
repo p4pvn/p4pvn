@@ -115,3 +115,6 @@ When you build a new version of an image from a Dockerfile,
 Docker often reuses existing layers that haven't changed to optimize the process.   
 A dangling image in Docker is essentially an image layer (or a set of layers) that is no longer associated with any tagged image.
 docker images --filter "dangling=true"
+
+
+anonymous volumes are volumes that are not currently in use by any containers
