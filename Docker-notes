@@ -96,3 +96,22 @@ docker tag imagename:latest username/reponame:latest
 Step 2: push it to dockerhub:
 docker push pawan/myrepository:latest
 docker push username/reponame:latest
+
+
+docker system prune -a is used to remove all unused Docker data including 
+All stopped containers
+All networks not used by at least one container
+All images without at least one container associated with them (unused images and dangling images)
+All build cache
+This command will not remove: Volumes (unless you also use the --volumes flag).
+Docker volumes are designed to persist data even after containers are removed. 
+Therefore, they are treated differently by the prune commands to prevent accidental data loss.
+
+Docker will prompt you for confirmation before proceeding with the prune operation. 
+You can bypass this prompt by adding the -f or --force flag (e.g., docker system prune -a -f). 
+
+Dangling Images: Docker images as layers stacked on top of each other, each layer representing changes to the filesystem. 
+When you build a new version of an image from a Dockerfile, 
+Docker often reuses existing layers that haven't changed to optimize the process.   
+A dangling image in Docker is essentially an image layer (or a set of layers) that is no longer associated with any tagged image.
+docker images --filter "dangling=true"
