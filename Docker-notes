@@ -117,4 +117,8 @@ A dangling image in Docker is essentially an image layer (or a set of layers) th
 docker images --filter "dangling=true"
 
 
-anonymous volumes are volumes that are not currently in use by any containers
+Anonymous Volumes: These are volumes that were created implicitly when a container was run without explicitly naming the volume (e.g., using -v /data). 
+They are typically tied to the lifecycle of the container and might persist even after the container is removed.
+Named Volumes: These are volumes that were explicitly created using the docker volume create <name> command or defined with a specific name in a Docker Compose file. 
+They are designed to persist data independently of container lifecycles.
+
