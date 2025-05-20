@@ -1207,3 +1207,18 @@ batch file(.bat or .cmd) is equivalent to shell script(.sh) file for windows.
 /var/spool directory in Linux is used to store files that are waiting to be processed by some system service or daemon.
 
 [September 2024]
+
+
+
+
+-----------------------------------------------------------------------------QAD---------------------------------------------------------------------
+When a Linux process is terminated by a signal, it returns an exit code that follows this formula:
+
+Exit Code = 128 + <signal number>
+
+So:
+Exit Code 137 = 128 + 9
+128 is the base used to indicate "killed by a signal"
+9 is the signal number for SIGKILL
+
+
