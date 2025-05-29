@@ -155,38 +155,22 @@ A Heapster is a cluster-wide aggregator of data that runs on each node.
 It is a Kubernetes project that provides a robust monitoring solution for Kubernetes clusters. 
 
 What do you know about Headless service?
-
 The Headless Service creates a service grouping that does not allocate an IP address or forward traffic.
 
 Tell the process name that runs on the Kubernetes master node.
 
 The process that runs on the Kubernetes master node is the Kube-apiserver.
 
-Explain DaemonSets:
+DaemonSets:
 The DaemonSets are pod sets that run on a host only one time on a host. And so, they are used attributes of host layers such as -network or network monitoring. 
 DaemonSet enables you to run the Kubernetes pod on the cluster nodes that fulfill certain criteria or requirements. 
 It ensures that some or all nodes run a copy of a pod. 
 DaemonSets are used to deploy background services, run cluster storage, log collection, and deploy a node monitoring daemon on every node
 
 
-35.
-Define StatefulSets.
-
-Hide Answer
-StatefulSets are a type of workload API that manage stateful applications. 
-They can also be used to manage the scaling and deployment of pod sets.
-
+StatefulSets are a type of workload API that manage stateful applications / keep session (mainly for DBs or )
+They can also be used to manage the scaling and deployment of pod sets similar to deployments
 
 Kubernetes Operators are software extensions that automate the management of complex applications on Kubernetes clusters.
 
-
-2.
-Explain the two types of Kubernetes pods
-single container pods
-multi container pods
-
-
-
 The Sematext Docker Agent is a lightweight log collection agent that runs as a container on a Docker host
-
-
