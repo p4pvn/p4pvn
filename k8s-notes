@@ -104,7 +104,15 @@ kubectl get jobs,cj -n sandbox
 # Manually trigger or create jobs from existing cronjob:
 kubectl -n sandbox create job --from cronjob.batch/batch-jobs-opensearch-remove-old-messages manual-batch-jobs-opensearch-remove-old-messages
 
+#container logs of previous pod:
+kubectl logs <pod-name> --previous
 
+#you can verbose the k8s command as well:
+
+-v=6                     - basic request and response logs
+-v=7                     - http request with response headers
+-v=8                     - http request response with body
+-v=9                     - maximum detail debug level
 ------------------------------ kubernetes architecture------------------------------------------
 https://chatgpt.com/c/67c5dc26-9abc-8012-8236-00fa9ce3ab35
 kubernetes architecture overview
@@ -180,4 +188,5 @@ multi container pods
 
 
 The Sematext Docker Agent is a lightweight log collection agent that runs as a container on a Docker host
+
 
