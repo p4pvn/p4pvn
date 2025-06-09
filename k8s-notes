@@ -176,4 +176,4 @@ Kubernetes Operators are software extensions that automate the management of com
 The Sematext Docker Agent is a lightweight log collection agent that runs as a container on a Docker host
 
 great notes for kubernetes ingress, where we need single ingress / multiple ingress and difference betn ingress and load balancer:
-https://chatgpt.com/share/6846d79e-ea1c-8012-ba03-448ddc6ef8dd
+https://chatgpt.com/share/6846d81b-6e90-8012-98c2-678dcbf9ae11
