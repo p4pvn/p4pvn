@@ -43,8 +43,10 @@ it's helpful for doing automated tasks / event driven tasks without having your 
 it is aws native hence support s3 events, dynamodb events (CRUD), sns, sqs, cloudwatch, cloudformation, rds events, etc.
 
 
-
-
+AWS IAM:
+actions  -->  policy  --> role --> user/iam group/server
+read     --> "read"   --> 
+ec2           ec2  
 
 
 
