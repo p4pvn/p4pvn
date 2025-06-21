@@ -1,11 +1,4 @@
 <h1 align="center">Hey 👋, I'm Pawan!</h1>
-<h3 align="center">🚀 DevOps Engineer | SRE | Cloud & Automation Enthusiast</h3>
-
-<p align="center">
-  <img src="https://media.giphy.com/media/qgQUggAC3Pfv687qPC/giphy.gif" width="300"/>
-</p>
-
----
 
 ## 🔥 **About Me**
 - 🚀 **DevOps Engineer & SRE**, working in US-based product company and ERP SaaS platforms  
