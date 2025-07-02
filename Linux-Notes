@@ -1221,4 +1221,10 @@ Exit Code 137 = 128 + 9
 128 is the base used to indicate "killed by a signal"
 9 is the signal number for SIGKILL
 
+--how to take a heap dump
+
+
+--how to base64 encode folders/directories to share 
+
+
 
