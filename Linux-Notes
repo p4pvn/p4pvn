@@ -628,6 +628,13 @@ user system nice idle wait hardware-interrupt software-interrupt stolen
 %steal in cpu : it shows you cpu used by another machine in hypervisor and hence stealed from you by CSP.
 hypervisor is added to create many servers from one large single server.
 
+press shift + i = I to turn off the irix mode, for %cpu to display w.r.t 100%
+press i to ignore zombie process, only show active process
+press u and type username and enter to find processes with that user
+press V (shift + v), will show you processes in tree format like parent and child processes
+W → Save current config to ~/.toprc
+
+
 45. Log Files and Their Locations:
 Syslog (System Logs): standard logging protocol: /var/log/syslog
 Kernel logs: messages related to Linux kernel:   /var/log/kern.log
