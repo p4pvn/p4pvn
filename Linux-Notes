@@ -152,6 +152,8 @@ wc -w file.txt    -it will count number of words in file.txt
 wc -c file.txt    -it will count number of characters in file.txt
 
 alias: you can create shortcuts for long commands.
+alias pawan='cd /home/ec2-user/pawan'
+unalias pawan  - remove alias
 
 less: It shows you the content stored inside a file, in a nice and interactive UI.
 
@@ -162,7 +164,7 @@ uniq: It removes duplicate content/words/lines.
 diff: it will show you diff betn two files.
 
 xargs:  It takes input from a pipe or from standard input and converts it into arguments for given command.
-cat todelete.txt | xargs rm       (rm < todelete.txt)
+cat todelete.txt | xargs rm       (xargs rm < todelete.txt)
 
 tr command stands for 'translate':
 echo "pavan" | tr 'pavan' 'pawan'    -replaces pavan with pawan  #output: pawan
