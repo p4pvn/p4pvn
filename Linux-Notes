@@ -132,6 +132,18 @@ echo '$name'   # Outputs: $name (no expansion)
 2. name="DevOps"
 echo "Hello $name"   # Outputs: Hello DevOps
 
+Command Substitution:
+echo "Today is $(date)"     # → Today is Sun Sep 28 11:35:12 IST 2025
+echo 'Today is $(date)'   # → Today is $(date)  (literal string, no expansion)
+
+echo "Line1\nLine2"   # → Line1
+                      #   Line2
+
+echo "{\"env\": \"$name\"}"       # → {"env": "DevOps"}
+if you add \ (backward slash) before " (double quotes), it will ignore the " (double quotes).
+
+Useful when handling JSON, YAML, CI/CD configs, or Kubernetes manifests.
+
 double quotes do shell expansion while single quotes doesnt do shell expansion and take values as literal. (avoid single quotes mostly)
 
 wc command: word count
@@ -259,9 +271,9 @@ shift : !         -command mode like terminal
 sed command in linux:
 It is used for text manipulation and useful for performing search-and-replace operations, editing specific lines to text files or input streams
 sed 's/apple/banana/' fruit.txt        -substitute apple with banana                   #it won't change content of file, it will just echo manipulation.
-sed 'error/d' logfile.txt             -delete the word 'error' in logfile
-sed -n '5,10p' documents.txt          -print 5 to 10 lines
-sed -n '15p' docs.txt                 -print line number 15
+sed 'error/d' logfile.txt              -delete the word 'error' in logfile
+sed -n '5,10p' documents.txt           -print 5 to 10 lines
+sed -n '15p' docs.txt                  -print line number 15
 
 #show line number x to y:
 sed -n 'x,yp' abc.txt
@@ -278,7 +290,7 @@ grep -A 4 "pawan" tmp      -pawan with next 4 lines After
 grep -B 4 "pawan" tmp      -pawan with before 4 lines
 grep -C 4 "pawan" tmp      -pawan with After & Before 4 lines
 egrep -in "pawan|soni|vijaya" tmp  -enhanced grep for multiple search
-grep -in 'Aug 24 08:51' tmp   -search for logs 24th aug @ 8:51 AM (24hr)
+grep -in 'Aug 24 08:51' tmp   -search for logs 24th Aug @ 8:51 AM (24hr)
 grep -oP '.{4}pawan.{4}'    - it will print 4 words before and 4 words after argument.
 
 
