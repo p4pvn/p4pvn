@@ -335,6 +335,12 @@ ZIP file:  zip pawan.zip
 tar -cf archive.tar pawan    # Create archive.tar from files pawan
 tar -xf archive.tar          # Extract all files from archive.tar
 
+++ history: it will show you previously executed commands for current user.
+
+you can turn history off temporarily:
+set +o history
+and turn back on:
+set -o history
 
 19.  "ps" stands for "process status." It helps users and system administrators to monitor and manage processes.
 ps      -lists processes started by the current user
@@ -797,6 +803,16 @@ disabling root login on Linux:
    6A: get uuid of partitions: blkid /dev/sdb1
    6B: add it in fstab: <UUID1>  /mfgpro  ext4  defaults  0  2
 7. Verify the Mounts: mount -a ; df -h
+
+51. Hidden Files/Folders in home directory:
+
+.bash_history - stores commands typed in bash shell.
+.bash_logout - executes this script when you logout from bash session.
+.bash_profile - executes this script once when you login to server. (manual login = interactive shell)
+.bashrc - executes this script for every non-interactive shell. (script login using !#/bin/bash = non-interactive shell)
+.lesshst - history for less command, which files you have opened using the less command (non-human-readable file)
+.viminfo - history for vim editor, same as .lesshst and non-human-readable
+.ssh - stores SSH configurations and keys
 
 --------------------------------------------------------------------- Additional notes -------------------------------------------------------------------
 
