@@ -360,6 +360,12 @@ system user - (UID 1-999 and GID 1-499)
 normal user - profiles (UID 1000-60000 and GID 1000-60000)
 every user has UID and GID.
 
+superuser access:
+
+add username to visudo file to give user an administrative access.
+add user to the wheel group to give user an admin access.
+
+you can add this in /etc/sudoers
 
 21. UID GID:
 Id pawan  :will give you GID and UID of user pawan
