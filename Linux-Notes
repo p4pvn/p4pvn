@@ -365,16 +365,22 @@ ps -u <username>     -proccess started by specific user
 ps -p <PID>          -Display this specific process PID
 ps -aux | grep "command"  - your command process
 
+Process Priorities:
+Nice values: range -20 (highest priority) to 19 (lowest).
+nice -n 10 command    - run command with nice command
+renice -5 -p 1234     - manage niceness of existing process with PID
+nice -n 15 big_script.sh & - run scripts with nice value in background
 
 20. user management: 
-super user - root (UID -0 and GID -0)
-system user - (UID 1-999 and GID 1-499)
+super user - root (UID -0 and GID -0) root
+system user - (UID 1-999 and GID 1-499) created for services (e.g., nginx, mysql).
 normal user - profiles (UID 1000-60000 and GID 1000-60000)
 every user has UID and GID.
 
 superuser access:
 
 add username to visudo file to give user an administrative access.
+pawan ALL=(ALL) NOPASSWD:ALL
 add user to the wheel group to give user an admin access.
 
 you can add this in /etc/sudoers
@@ -383,7 +389,7 @@ you can add this in /etc/sudoers
 Id pawan  :will give you GID and UID of user pawan
 
 User management:
-useradd pawan :new user pawan created
+useradd pawan : new user pawan created
 su pawan :switch user to pawan
 passwd :set passwd for current user
 sudo usermod -aG group1 ${USER} : adding USER to group1 to inherit its permissions.
@@ -433,7 +439,6 @@ To give permission:
 chmod 777 tmp  -all permission to (owner,group,other) to tmp
 chmod 700 tmp  -owner all and group/other no permission
 
-
 28. umask for default permission:
 root user for default umask = 022
 root user for default umask = 002
@@ -451,6 +456,19 @@ getfacl pawan             -list all permissions of pawan
 31. Partition management:
 Partitions are sections of a hard drive or storage device that are treated as separate units
 go to #50.
+
+A partition is a logically divided section of a physical disk.
+Each partition can hold a filesystem (ext4, xfs, etc.) or swap space
+
+Partition Table Types:
+MBR (Master Boot Record):                                 | GPT (GUID Partition Table)
+-old                                                      | -modern standard
+-supports up to 4 primary partitions                      | - supports 128 partitions
+-max disk size ~2TB                                       | - works with large disks (>2TB)
+
+lsblk - list all disks
+fdisk -l  -detailed info about disks
+blkid        -Partitions detailed UUId
 
 types of hardisk: SATA and PATA
 SATA:
