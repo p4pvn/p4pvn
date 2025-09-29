@@ -344,7 +344,19 @@ set +o history
 and turn back on:
 set -o history
 
-19.  "ps" stands for "process status." It helps users and system administrators to monitor and manage processes.
+19. Process Management:
+
+each process has  PID,        PPID,      State,   Owner,   Priority/Nice value,    Resources
+                process ID, parent PID, running,  user,     number                 CPU, Memory
+                                        sleep, stop, zombie, orphan
+types of process:
+foreground process: blocks the terminal like top, vi, watch
+Background process: runs in background with detached terminal (with & in end) like sleep 60 &
+Daemon process: long-running services like sshd, systemctl start/enable
+Zombie process: task/process has completed but still showing entry in data table.
+Orphan process: Parent process completed but child process still alive/running
+
+"ps" stands for "process status." It helps users and system administrators to monitor and manage processes.
 ps      -lists processes started by the current user
 ps -e   -Shows information about all running processes
 ps -f   -provides output in full format (process ownership, parent process ID, CPU, memory usage, start time)
