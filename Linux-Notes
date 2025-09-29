@@ -842,6 +842,27 @@ disabling root login on Linux:
    6B: add it in fstab: <UUID1>  /mfgpro  ext4  defaults  0  2
 7. Verify the Mounts: mount -a ; df -h
 
+Logical Volume Management(LVM):
+More flexible than fixed partitions.
+Useful for resizing volumes dynamically in production.
+
+1. Create PV (Physical Volume):
+pvcreate /dev/sdb1
+
+2. Create VG (Volume Group):
+vgcreate data-vg /dev/sdb1
+
+3. Create LV (Logical Volume):
+lvcreate -L 10G -n data-lv data-vg
+
+4. Format and Mount LV:
+mkfs.ext4 /dev/data-vg/data-lv
+mount /dev/data-vg/data-lv /mnt/data
+
+5. Resize when needed:
+lvextend -L +5G /dev/data-vg/data-lv
+resize2fs /dev/data-vg/data-lv
+
 51. Hidden Files/Folders in home directory:
 
 .bash_history - stores commands typed in bash shell.
