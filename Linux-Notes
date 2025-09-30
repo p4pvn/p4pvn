@@ -342,7 +342,7 @@ ZIP file:  zip pawan.zip
 tar -cf archive.tar pawan    # Create archive.tar from files pawan
 tar -xf archive.tar          # Extract all files from archive.tar
 
-++ history: it will show you previously executed commands for current user.
+history: it will show you previously executed commands for current user.
 
 you can turn history off temporarily:
 set +o history
