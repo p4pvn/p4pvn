@@ -509,11 +509,20 @@ PATA:
 read X
 read Y
 if [[ $X -gt $Y ]]; then
-echo "X is greater than Y"
+	echo "X is greater than Y"
 elif [[ $X -lt $Y ]]; then
-echo "X is less than Y"
+	echo "X is less than Y"
 elif [[ $X -eq $Y ]]; then
-echo "X is equal to Y"
+	echo "X is equal to Y"
+fi
+
+#if triangle is isocelese or equilateral or scalene
+if [[ $X -eq $Y && $Y -eq $Z ]]; then
+    echo "EQUILATERAL"
+elif [[ $X -eq $Y || $Y -eq $Z || $X -eq $Z ]]; then
+    echo "ISOSCELES"
+else
+    echo "SCALENE"
 fi
 
 if [ -z "$string" ];            :if string is zero/empty.
