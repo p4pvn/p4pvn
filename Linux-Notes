@@ -611,20 +611,71 @@ for i in "${packages[@]}"; do
 done
 
 Networking commands:
-1. PING will send ICMP packets to server to test the reachability of a host
+1. PING will send ICMP packets to the server to test the reachability of a host
+ping google.com  : it will send ICMP packets to the domain/host google.com
+                   you can define packet size or how many packets with various flags/options.
+                   It helps with checking network connection with packet loss stats.
+
 2. netstat will show you network statistics (port listening, active network connections, routing tables)
    netstat -alp       : all listening ports
    netstat -tulnp     : tcp udp listening numeric port
+
+
 3. nslookup  will show you ip addresses of domain
-4. traceroute will show you no. of hops.
-5. ifconfig -a will show you info of NIC n/w interface cards.
+nslookup google.com
+
+4. traceroute will show you no. of hops packets takes before reaching to the target server.
+
+5. ifconfig:
+will show you info on NIC n/w interface cards.
+mostly eth0 and one logical NIC lo (local)
+
+> "ens5: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 9001"
+it is showing you interface is up and running, broadcast is working and maximum transmission unit size is 9001 bytes.
+
+> "inet 100.117.95.90  netmask 255.255.255.192  broadcast 100.117.95.127"
+inet → IPv4 address = 100.117.95.90
+netmask = 255.255.255.192 → means subnet /26 (64 IPs total, 62 usable).
+broadcast = 100.117.95.127 → broadcast address of the subnet. (special address used to send packets to all hosts)
+The 
+rest of the things are IPv6 and transmitted and received packets.
+
+1st IP → Network address (not usable). used to identify network itself.
+Last IP → Broadcast address (not usable).
+
+# AWS VPC Networking (special rules):
+AWS reserves 5 IP addresses in every subnet, regardless of size:
+> Network address → 1st IP (e.g. 100.117.95.64)
+  Identifies the subnet itself.
+> VPC router/gateway → 2nd IP (e.g. 100.117.95.65)
+  Always used as the default gateway for instances.
+> Reserved for AWS mapping → 3rd IP (e.g. 100.117.95.66)
+  AWS keeps it for internal purposes.
+> Reserved for AWS DNS → 4th IP (e.g. 100.117.95.67)
+  Used for Amazon DNS in the subnet.
+> Broadcast address → Last IP (e.g. 100.117.95.127)
+  Even though AWS does not support broadcast, this IP is still reserved.
+
+https://chatgpt.com/s/t_68de444b8f888191a2271d2d46e72b52
+
 6. ss  (sockets by state) (alt to netstat) Information about TCP, UDP, and Unix domain sockets. 
        It provides real-time data on network connections, listening ports, and other socket-related information
    ss -alp : all listening ports
-7. curl used to make http request using command line, support http/s , ftp and many more.
-8. wget is  utility for retrieving files from the internet using various protocols like HTTP, HTTPS, FTP
-9. systemctl will list all the services.
-10. lsb_release -a :will show you the version of linux. (cat /etc/os-release)
+   ss -tulpn : tcp udp listening number ports
+listening ports command use to check if any unwanted service is running, or webapps are running or port conflicts (many apps on single ports).
+
+
+7. curl used to make HTTP requests using command line, supports http/s , ftp and many more.
+used in api, connectivity, testing, downloading. 
+gives you raw api response.
+
+curl -L: follow redirects 301/302
+curl -I: show headers only (Key–value pairs sent before the body of an HTTP request or response)
+
+8. wget is  utility for retrieving files from the internet using various protocols like HTTP, HTTPS, FTP.
+mainly used for downloading stuff.
+
+10. lsb_release -a :will show you the version of Linux. (cat /etc/os-release)
 
 11. lsof : will list open files
     lsof -i :8080        :will show you the port if listening and PID etc
@@ -633,8 +684,12 @@ Networking commands:
     lsof -c <command>    :list open file by command
 
 12. nmap localhost: use it to scan for open ports on a machine.
+CLI tool for port discovery, service/version detection, OS fingerprinting, and basic vulnerability/scripted checks. 
+Used for inventory, troubleshooting, and security auditing
 
-14. sar (System Activity Reporter):  a command-line tool for collecting, reporting, and analyzing system activity.
+14. SAR (System Activity Reporter): a command-line tool for collecting, reporting, and analysing system activity in a 10-minute time interval.
+CPU     %user     %nice   %system   %iowait    %steal     %idle
+ALL
 
 15. route : this command shows, add, deletes the IP routing table.
 
@@ -680,22 +735,18 @@ systemctl unmask sshd                   = it will unmask the previously mask ser
 systemctl poweroff                      = shutdown right now
 journalctl -u servicename               = view service logs
 
-
 41. kill and kill -9
 syntax:
 kill [signal] PID
-
 kill PID: (default -15) Allows the process to handle the signal and perform cleanup operations(gracefully) before termination.
 kill -9 PID: Forcibly terminates the process without allowing it to perform any cleanup.
 killall:  this command kills processes by name rather than by process ID
-
 
 42. rsync (remote synchronization) (ssh protocol)
 
 rsync -avz /path/to/local/directory user@IPaddress:/path/to/destination/
 This command would transfer files from the local source directory to a remote destination directory. (archieve, verbose, zip)
 (if vpc peering is done, then privateIP if not then publicIP)
-
 
 43. Understanding Load Average:
     Load averages indicates the average number of processes competing for the CPU over different time intervals (1, 5, 15 min)
@@ -744,6 +795,8 @@ install its dependencies as per documentation.
 
 Installing application from source code:
 Download the source code, usually a .tar.gz or .tar.bz2
+wget <URL>
+
 1. Extract the archive:
 - tar -xzf <file-name>.tar.gz
 
@@ -768,7 +821,6 @@ converts human-readable source code (like .c or .cpp files) into machine-readabl
 47. Patching a source file
 cd /path/to/source_code
 patch -p1 < /path/to/patchfile.diff
-
 
 48. Configuring mail on Linux server:
 1. Install Required Packages: 
