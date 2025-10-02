@@ -490,8 +490,17 @@ PATA:
  3. if [ -d "$directory" ]; then
    # if directory is a directory
 
- 4. if [ -s "$file" ];
+ 4. if [ -s "$file" ]; then
    # if filesize is greater than 0
+
+# if block is non-zero then execute code
+if [ -n $filename ]; then
+	echo ""
+elif []; then
+	echo ""
+else
+	echo ""
+fi
 
  5. if [ $num1 -eq $num2 ];   #if number1 is equal to number2
 
@@ -525,6 +534,7 @@ else
     echo "SCALENE"
 fi
 
+if [ -n $filename ]; then       :if string is non-zero then execute..
 if [ -z "$string" ];            :if string is zero/empty.
 if [ $? -eq 0 ];                :if above command is successful
 if [ "$(id -u)" -eq 0 ];        :if user has superuser privileges
@@ -534,16 +544,16 @@ if [ -w "$file" ];      :if file is writable/readble(-r)/executable(-x)
 33. Declaring Variables:
    name="Pawan"        -Pawan is stored in "$name" (no space)
    var=$(ls -la)         #o/p value is stored in $var.
-   
+
 34. Taking input from user:
     echo "Write your name here:"
     read user_name      
     #name is stored in "$user_name"
 
-add=$((X + Y)) ; echo "$add"
-diff=$((X - Y))
-prod=$((X * Y))
-div=$((X / Y))
+add=$((X + Y))    ; echo "$add"
+diff=$((X - Y))   ; echo "$diff"
+prod=$((X * Y))   ; echo "$prod"
+div=$((X / Y))    ; echo "$div"
 
 
 35. for-do-done loop:
@@ -603,7 +613,8 @@ done
 Networking commands:
 1. PING will send ICMP packets to server to test the reachability of a host
 2. netstat will show you network statistics (port listening, active network connections, routing tables)
-   netstat -alp : all listening ports
+   netstat -alp       : all listening ports
+   netstat -tulnp     : tcp udp listening numeric port
 3. nslookup  will show you ip addresses of domain
 4. traceroute will show you no. of hops.
 5. ifconfig -a will show you info of NIC n/w interface cards.
