@@ -875,13 +875,17 @@ ssh -R 9090:localhost:22 user@192.168.1.100
 If your local machine runs an SSH server on port 22, by running this command, you can SSH into it from the remote server.
 ssh -p 9090 user@localhost
 
-SOCKS Proxy:
+SOCKS Proxy: SOCKS proxy in SSH is a way to tunnel your local traffic through an SSH connection, turning your SSH client into a proxy server.
+
 ssh -D 9090 -N -q user@remote-server.com
 
 Your connection appears as if it's coming from the remote server ; bypasses restricted sites on network; acts as VPN/proxy.
 -D 9090 → Creates a SOCKS proxy on local port 9090.
 -N → No remote command execution, just keep the tunnel open.
 -q → Quiet mode (suppresses messages).
+
+Set this to cmd where you want to tunnel traffic through remote server as proxy.
+set HTTPS_PROXY=socks5://localhost:8081
 
 SSH Config file: 
 1. open ~/.ssh/config and add details:
@@ -956,6 +960,7 @@ mount /dev/data-vg/data-lv /mnt/data
 lvextend -L +5G /dev/data-vg/data-lv
 resize2fs /dev/data-vg/data-lv
 
+
 51. Hidden Files/Folders in home directory:
 
 .bash_history - stores commands typed in bash shell.
@@ -1000,11 +1005,13 @@ crontab -e : open vi editor for scheduled cron jobs
 
 
 IP Address Classes:
-Class A: 10.0.0.0 - 10.255.255.255          255.0.0.0/8
-Class B: 172.16.0.0 - 172.31.255.255        255.240.0.0/12
-Class C: 192.168.0.0 - 192.168.255.255      255.255.0.0/16
+Class A: 10.0.0.0 - 10.255.255.255            10.0.0.0/8         255.0.0.0      ~ 16 million IPs available                             BIG
+Class B: 172.16.0.0 - 172.31.255.255          172.16.0.0/12      255.240.0.0    ~ 1 million IPs available (default for AWS VPC)        Medium
+Class C: 192.168.0.0 - 192.168.255.255        192.168.0.0/16     255.255.0.0    ~ 65K IPs available                                    Small
 
-|| exit 1  :logical OR, if command fails then exit
+Today, we don’t use classes much; instead, we use CIDR (Classless Inter-Domain Routing) notation (such as/8, /12, /16).
+
+|| exit 1  : logical OR, if command fails, then exit 1.
 
 lscpu
 list no. of cpu cores
