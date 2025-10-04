@@ -229,6 +229,11 @@ checksum is a unique digital fingerprint (hash) that represents the content of a
 if hash/checksum matches between source and destination, then integrity not compromised, you can proceed safely ahead.
 if not, then data is corrupted, manipulate, cannot proceed with data.
 
+Original file (text.log)     → checksum: A1B2C3
+After network copy           → checksum: A1B2C3  ✅ same
+After data corruption        → checksum: 9F8E7D  ❌ different
+
+
 checksum is used by rsync, git, docker image, s3, terraform, linux packages, iso (disc image file).
 
 checksum/hashing algorithms:                                   OUTPUT characters
