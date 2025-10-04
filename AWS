@@ -49,6 +49,9 @@ read     --> "read"   -->
 ec2           ec2  
 
 
-
-
+us-east-1 and us-east-2 are separate regions.
+(N. virginia) & (ohio).
+us-east-1(a) and us-east-2(b) are separate availability zones. (for same account)
+these a and b tags are not consistent across all aws accounts.
+your tag a means tag b for another aws account.
 
