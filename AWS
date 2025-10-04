@@ -54,4 +54,4 @@ us-east-1 and us-east-2 are separate regions.
 us-east-1(a) and us-east-2(b) are separate availability zones. (for same account)
 these a and b tags are not consistent across all aws accounts.
 your tag a means tag b for another aws account.
-
+that's why you need to AZs ID which are globally unique like USE1-AZ1
