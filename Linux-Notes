@@ -212,8 +212,16 @@ cp abc.txt xyz.txt        #it will completely remove the content of xyz and repl
 remote copying from server:
 scp for secure copy
 scp options user@host1:source_file_or_directory user@host2:destination
+scp for file copying:
 scp -i key.pem test.txt pawan@10.143.90.2:/home/pawan
-rsync -avz /path/to/local/directory root@IP:/path/to/destination/       (if vpc peering is done, then privateIP if not then publicIP)
+
+rsync for directory copying / syncing
+rsync -avz /path/to/local/directory root@IP:/path/to/destination/directory       (if vpc peering is done, then privateIP if not then publicIP)
+-a : archive mode (preserve metadata of file like owner permission links)
+-v : verbose
+-z : zip compress data during transfer
+--delete: by default, rsync only updates or adds, never removes, with --delete, it removes as well.
+
 
 copying file from AWS to Local:
 scp -i "C:\Users\PAWAN\Downloads\name2.pem" ubuntu@54.88.229.129:/etc/nginx/nginx.conf "C:\Users\PAWAN\OneDrive\Desktop\nginx.conf"
@@ -744,9 +752,14 @@ killall:  this command kills processes by name rather than by process ID
 
 42. rsync (remote synchronization) (ssh protocol)
 
-rsync -avz /path/to/local/directory user@IPaddress:/path/to/destination/
-This command would transfer files from the local source directory to a remote destination directory. (archieve, verbose, zip)
+rsync -avz /path/to/local/directory user@IPaddress:/path/to/destination/directory
+
+This command would transfer files from the local source directory to a remote destination directory. (archive, verbose, zip)
+
+by default, rsync never remove/delete files in destination, you have to add --delete for complete mirror syncing.
+--delete for mirror mode
 (if vpc peering is done, then privateIP if not then publicIP)
+It also syncs content of files within directory, if any difference found in source/directory/*.log and destination/directory/*log then it will sync automatically.
 
 43. Understanding Load Average:
     Load averages indicates the average number of processes competing for the CPU over different time intervals (1, 5, 15 min)
