@@ -229,11 +229,14 @@ checksum is a unique digital fingerprint (hash) that represents the content of a
 if hash/checksum matches between source and destination, then integrity not compromised, you can proceed safely ahead.
 if not, then data is corrupted, manipulate, cannot proceed with data.
 
+checksum is used by rsync, git, docker image, s3, terraform, linux packages, iso (disc image file).
+
 checksum/hashing algorithms:                                   OUTPUT characters
 MD5 - common checks- basic                                      32 characters
 SHA-1 - used in legacy systems - faked easily                   40 characters
-SHA-256 - stronger integrity check - slower                     64 characters
+SHA-256 - stronger integrity check - slower speed               64 characters
 SHA-512/BLAKE2 - cryptography                                   128+ characters
+
 
 copying file from AWS to Local:
 scp -i "C:\Users\PAWAN\Downloads\name2.pem" ubuntu@54.88.229.129:/etc/nginx/nginx.conf "C:\Users\PAWAN\OneDrive\Desktop\nginx.conf"
