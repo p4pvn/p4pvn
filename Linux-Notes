@@ -935,6 +935,9 @@ ssh-keygen: command will generate private and public key.
 Public key is used to encrypt data that only the corresponding private key can decrypt.
 Private key is used to decrypt data that was encrypted with the corresponding public key.
 
+private keys are used to sign the certificate.
+public keys are used to verify the certificate.
+
 authorized_keys: Stores public keys of the devices that are allowed to access your account.
 known_hosts: Keeps fingerprints of remote servers you’ve connected to.
 known_hosts.old: A backup of the known_hosts file.
