@@ -1385,7 +1385,7 @@ available memory includes both the free memory and the reclaimable memory from t
 
 Blocks have a size of 512 bytes.
 
-OpenSSL can create SSL/TLS certificates, which are used to secure communication between servers and clients (like your browser and a website).
+OpenSSL can create SSL/TLS s, which are used to secure communication between servers and clients (like your browser and a website).
 
 change branch name in git:
 git branch -m old-branch-name new-branch-name
@@ -1465,3 +1465,7 @@ https://chatgpt.com/share/68a33e3c-c964-8012-963b-f3f2e2917a7f
 Important Chatgpt chat links:
 ----------------------------------------------------------Oauth/Auth0/OIDC/SAML-----------------------------------------------------------------
 https://chatgpt.com/share/68e7d8ef-56a8-8012-a54e-635269b27f40
+
+---------------------------------------------------------Certificates Explained-----------------------------------------------------------------
+
+https://chatgpt.com/s/t_6903a2afdf848191bc369a36ad3fadf5
