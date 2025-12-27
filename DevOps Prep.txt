@@ -1,0 +1,115 @@
+Kubernetes:
+https://drive.google.com/drive/folders/1dDzfahkBp0K8IBKRlP1vuN4jWeMjysVg
+https://bchess.github.io/k8s-1m/
+https://x.com/livingdevops/status/2002460725244277063
+https://x.com/livingdevops/status/1998127519493750856
+https://x.com/e_opore/status/1997506978424193038
+https://x.com/livingdevops/status/1994717877354860748?s=20
+https://x.com/fromcodetocloud/status/1992829127557312628?s=20
+https://x.com/MuthaNagavamsi/status/1992627299909525637?s=20
+https://x.com/techopsexamples/status/1990583629714763957?s=20
+https://x.com/brankopetric00/status/1984390258084000087?s=20
+https://x.com/brankopetric00/status/1984238484559655084?s=20
+https://x.com/devopscube/status/1983383540034129957?s=20
+https://x.com/brankopetric00/status/1981089374948254023?s=20
+https://x.com/devopscube/status/1980484361754378485?s=20
+https://x.com/brankopetric00/status/1980306515379822983?s=20
+https://x.com/brankopetric00/status/1978213222097490310?s=20
+https://x.com/iximiuz/status/1977680279377703291?s=20
+https://x.com/devopscube/status/1977590018244739341?s=20
+https://x.com/livingdevops/status/1976029164424634863?s=20
+https://x.com/livingdevops/status/1975835976577495123?s=20
+https://youtu.be/LDc4qzzsNMY - Kubernetes hacks
+https://x.com/devops_tech/status/1927307444058800527?s=20
+https://x.com/iximiuz/status/1970181938247016568?s=20
+https://x.com/asmah2107/status/1969776956964020552?s=20
+https://x.com/livingdevops/status/1969323104255295658?s=20
+https://x.com/livingdevops/status/1968604502455394441?s=20
+https://youtu.be/Ve0YU6JviLE - Kubernetes upgrade tutorial
+https://x.com/MuthaNagavamsi/status/1958654501898133672?s=20 - Kubernetes scoring system and priorities
+https://x.com/kiraniyer0/status/1933498023969017974?s=20 - coredns explained
+https://x.com/K8sArchitect/status/1897306371978059845?s=20 - kustomize project structure
+https://x.com/todaywasawesome/status/1891918274427789501?s=20 - k8 anti patterns
+
+1) Understanding Kubernetes Logs - A Comprehensive Guide
+↳ https://techopsexamples.com/p/kubernetes-logs-breakdown
+2) Kubernetes ImagePullBackOff Explained 
+↳ https://techopsexamples.com/p/kubernetes-imagepullbackoff-explained
+3) How To Fix OOMKilled 
+↳ https://techopsexamples.com/p/how-to-fix-oomkilled
+4) How to Fix Kubernetes Node Disk Pressure 
+↳ https://techopsexamples.com/p/how-to-fix-kubernetes-node-disk-pressure
+5) How To Fix Kubernetes Node Not Ready 
+↳ https://techopsexamples.com/p/kubernetes-node-not-ready-how-to-fix-it
+6) Understanding Kubernetes CreateContainerError 
+↳ https://techopsexamples.com/p/understanding-kubernetes-createcontainererror
+7) Understanding Kubernetes CreateContainerConfigError 
+↳ https://techopsexamples.com/p/understanding-kubernetes-createcontainerconfigerror
+8) Kubernetes RunContainerError Explained 
+↳ https://techopsexamples.com/p/kubernetes-runcontainererror-explained
+
+Kubernetes Failure Stories Hub
+https://k8s.af
+
+Observability:
+https://x.com/livingdevops/status/1994393648134594805?s=20
+https://x.com/livingdevops/status/1990765892154896758?s=20
+https://x.com/brankopetric00/status/1978797824734384604?s=20
+
+Terraform:
+https://x.com/devopscube/status/1983511881860911581?s=20
+https://x.com/brankopetric00/status/1982736316887396508?s=20
+https://x.com/brankopetric00/status/1980780476521386245?s=20
+https://x.com/livingdevops/status/1976200405596905527?s=20
+https://x.com/livingdevops/status/1972262480551579827?s=20
+
+AWS:
+https://x.com/PrateekJainDev/status/1997740141549363510?s=20
+https://x.com/sahnlam/status/1988478376097812737?s=20
+https://x.com/brankopetric00/status/1985720003664994586?s=20
+https://x.com/brankopetric00/status/1985261683409875423?s=20
+https://x.com/brankopetric00/status/1982225745297486116?s=20
+https://x.com/brankopetric00/status/1981171216661827718?s=20
+https://x.com/brankopetric00/status/1978213222097490310?s=20
+https://x.com/e_opore/status/1972108819900649587?s=20
+https://x.com/arpit_bhayani/status/1966127731684552879?s=20
+
+GIT:
+https://x.com/PrateekJainDev/status/1989297258450292998?s=20
+https://x.com/milan_milanovic/status/1988509569619030309?s=20
+
+OS and NW:
+https://github.com/p4pvn/p4pvn/blob/main/Linux-Notes
+https://x.com/sahaj__b/status/1995062153876005022?s=20
+https://x.com/livingdevops/status/1990033131202838882?s=20
+https://x.com/popovicu94/status/1988833788634558920?s=20
+https://x.com/popovicu94/status/1988839738523152487?s=20
+https://x.com/livingdevops/status/1988861384294322231?s=20
+https://x.com/brankopetric00/status/1982799551246266586?s=20
+https://x.com/brankopetric00/status/1982439581988323701?s=20
+https://x.com/devops_inside/status/1982099843951866283?s=20
+https://x.com/brankopetric00/status/1978964925503447242?s=20
+https://x.com/devops_tech/status/1703425235654201816?s=20
+https://x.com/devops_inside/status/1973708697709822295?s=20
+https://x.com/iximiuz/status/1970181938247016568?s=20
+https://x.com/arpit_bhayani/status/1952357515766772198?s=20
+https://x.com/Franc0Fernand0/status/1852625449966285307?s=20
+
+Backend and DB:
+https://x.com/e_opore/status/1997608715046801614?s=20
+https://x.com/javainterviewer/status/1990076773615431804?s=20
+https://x.com/sahnlam/status/1988478376097812737?s=20
+https://x.com/PrateekJainDev/status/1988458169329172711?s=20
+https://x.com/milan_milanovic/status/1988147181166158054?s=20
+https://x.com/techNmak/status/1987151433050038606?s=20
+https://x.com/e_opore/status/1986491677830152311?s=20
+https://x.com/teej_m/status/1986253286501204260?s=20
+https://x.com/e_opore/status/1985427526622331177?s=20
+https://x.com/harshsinghsv/status/1982183486397022715?s=20
+https://x.com/harshsinghsv/status/1982060432324964795?s=20
+https://x.com/brankopetric00/status/1980289402954760579?s=20
+https://x.com/Franc0Fernand0/status/1979186490509832475?s=20
+
+
+
+
