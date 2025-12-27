@@ -1439,6 +1439,9 @@ batch file(.bat or .cmd) is equivalent to shell script(.sh) file for windows.
 [September 2024]
 
 
+Server load so high you can’t even SSH in?
+ssh -o ConnectTimeout=1 -o ConnectionAttempts=1 user@host "nice -n -20 bash"
+It gets you a high-priority shell when nothing else works.
 
 
 -----------------------------------------------------------------------------QAD---------------------------------------------------------------------
