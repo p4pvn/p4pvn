@@ -1486,9 +1486,10 @@ https://chatgpt.com/share/6905c9c1-ffb4-8012-89e2-3137a52d2b31
 --------------------------------------------------------------------------CPU NOTES-----------------------------------------------------------------
 SRAM DRAM CPU L1 L2 L3 RAM:
 
-DRAM (Dynamic RAM): A specific, cost-effective type of RAM that stores data in capacitors, 
+DRAM (Dynamic RAM): A specific, cost-effective type of RAM that stores data in capacitors in the form of electric charges, 
 requiring constant refreshing to prevent charge leakage, making it ideal for main system memory (like your computer's sticks).
 
 SRAM (Static RAM): Another type of RAM, faster and more expensive, 
-using transistors to hold data without refreshing, making it perfect for CPU cache (Level 1, 2, 3). 
+using transistors  in the form of voltage to hold data without refreshing, making it perfect for CPU cache (Level 1, 2, 3). 
 
+SRAM is used as cache memory whereas DRAM is used as main memory in computer systems
