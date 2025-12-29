@@ -1493,5 +1493,6 @@ SRAM (Static RAM): Another type of RAM, faster and more expensive,
 using transistors  in the form of voltage to hold data without refreshing, making it perfect for CPU cache (Level 1, 2, 3). 
 
 SRAM is used as cache memory whereas DRAM is used as main memory in computer systems.
+<img width="755" height="380" alt="image" src="https://github.com/user-attachments/assets/3c272a60-37a1-4efb-968c-de137ded8de2" />
 
 
