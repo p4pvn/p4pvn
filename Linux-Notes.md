@@ -1495,4 +1495,36 @@ using transistors  in the form of voltage to hold data without refreshing, makin
 SRAM is used as cache memory whereas DRAM is used as main memory in computer systems.
 <img width="755" height="380" alt="image" src="https://github.com/user-attachments/assets/3c272a60-37a1-4efb-968c-de137ded8de2" />
 
+---------------------------------------------------------------------Quick redis commands---------------------------------------------------------------
+login to redis-cli -p 6379
 
+1. GET <my-key>
+show the value for given key
+
+2. SET my-key "value"
+set the new value for given key
+
+3. DEL my-key
+delete the key altogether
+
+4. EXISTS my-key
+check if key exists?
+
+5. TYPE my-key
+type of key (string, number)
+
+6. RENAME my-key new-key
+renaming the key
+
+7. EXPIRE my-key 300
+set ttl expire key in seconds
+
+8. WATCH my-key
+watch and monitor key (if new value getting updated after set?)
+
+Take DUMP & RESTORE of redis key values:
+
+command to dump:
+redis-cli --raw DUMP key-1 | base64 > key-1.dump
+command to restore:
+cat key-1.dump | base64 --decode | redis-cli -x RESTORE key-1 0
