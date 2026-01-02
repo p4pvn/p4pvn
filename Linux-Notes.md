@@ -1547,6 +1547,7 @@ nodetool status - shows status of cluster (up/down)
 
 nodepool gcstats - shows garbage collection statistics
 
+<img width="442" height="293" alt="image" src="https://github.com/user-attachments/assets/df8f9411-32f2-4b0f-9fec-5a3fce887f22" />
 
 
 
