@@ -1550,7 +1550,32 @@ nodepool gcstats - shows garbage collection statistics
 <img width="442" height="293" alt="image" src="https://github.com/user-attachments/assets/df8f9411-32f2-4b0f-9fec-5a3fce887f22" />
 
 
+--------------------------------------------------------------opensearch quick notes--------------------------------------------------------
+https://docs.opensearch.org/latest/getting-started/intro/
+
+opensearch DB (distributed) is used for querying and searching (analytics) within database like for APIs, dashboards, users
+
+for example: 
+Cassandra:
+“Give me order order_id=123”
+OpenSearch:
+- Search orders created last week, status=FAILED, region=EU, text contains timeout
+- implementing a search box on a website
+
+Cassandra is primary database and source of truth while opensearch ingest data from primary DB and act as replica.
+
+Document
+Index - collection of multiple documents.
+shards - OpenSearch splits indexes into shards. Each shard stores a subset of all documents in an index, as shown in the following image
+<img width="401" height="201" alt="image" src="https://github.com/user-attachments/assets/70103f63-6507-4a28-bfb1-86d5aa45c009" />
 
 
+Consider a cluster with 2 indexes: index 1 and index 2. 
+Index 1 is split into 2 shards, and index 2 is split into 4 shards. 
+The shards are distributed across nodes 1 and 2.
+<img width="601" height="291" alt="image" src="https://github.com/user-attachments/assets/443d9e77-805a-4794-8318-be02f0b7a708" />
 
+Inverted index is the reason why it's fast with searching and querying analytics.
+it does not let same words/content store twice or more that makes it fast.
 
+Cluster → node → index → shard → replica
