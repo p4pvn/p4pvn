@@ -1532,14 +1532,19 @@ cat key-1.dump | base64 --decode | redis-cli -x RESTORE key-1 0
 ----------------------------------------------------------------------- quick cassandra commands--------------------------------------------------
 
 cassandra's keyspace ≈ Database (schema for rdbms) - consists of multiple tables
+
 tables: defined within keyspace, table store data in set of row and columns
+
 columns: data structure within table
 
 <img width="400" height="458" alt="image" src="https://github.com/user-attachments/assets/c2a6e74c-a5fd-4ac3-bae9-350ebc9bdba1" />
 
 nodetool version - shows cassandra's version
+
 nodetool info - shows info about uptime, heap memory load etc.
+
 nodetool status - shows status of cluster (up/down)
+
 nodepool gcstats - shows garbage collection statistics
 
 
