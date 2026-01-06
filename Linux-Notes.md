@@ -1504,8 +1504,11 @@ show the value for given key
 2. SET my-key "value"
 set the new value for given key
 
+2. KEYS *tenant*
+scan entire redis for keys that contain tenant word
+
 3. DEL my-key
-delete the key altogether
+delete the key altogether / cache invalidation
 
 4. EXISTS my-key
 check if key exists?
