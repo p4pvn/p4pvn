@@ -262,3 +262,9 @@ The Sematext Docker Agent is a lightweight log collection agent that runs as a c
 
 great notes for kubernetes ingress, where we need single ingress / multiple ingress and difference betn ingress and load balancer:
 https://chatgpt.com/share/6846d81b-6e90-8012-98c2-678dcbf9ae11
+
+
+Kubernetes Course Recording Notes:
+( https://drive.google.com/drive/folders/1dDzfahkBp0K8IBKRlP1vuN4jWeMjysVg )
+
+Day 9: Deployment and Services types, label and selector matchLables, coredns and DNS table explained, /etc/resolve.conf
