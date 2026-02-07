@@ -269,4 +269,4 @@ Kubernetes Course Recording Notes:
 
 Day 9: Deployment and Services types, label and selector matchLabels, coredns and DNS table explained, /etc/resolve.conf
 Day 10: port targetport logic, labels - selectors logic , service type: loadbalancer explained
-Day 11: 
+*Day 11: service type explained deeply, diff betn load balancer and ingress controller, 
