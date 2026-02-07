@@ -14,7 +14,7 @@ Kubernetes Architecture:
                     /                 
                Service             (Public to Pvt IP)              1. ClusterIP
                   |              acts as a Load Balancer           2. NodePort
-                  |                                                3. LoadBalancer      4. External Name
+                  |                                                3. LoadBalancer      4. External Name  5. Headless
               Deployment      (Provides Rolling Updates)           1. Rolling Deployment
                   |                                                2. Recreate
                   |                                                3. Canary Deployment (blue/green deployment)
@@ -267,5 +267,6 @@ https://chatgpt.com/share/6846d81b-6e90-8012-98c2-678dcbf9ae11
 Kubernetes Course Recording Notes:
 ( https://drive.google.com/drive/folders/1dDzfahkBp0K8IBKRlP1vuN4jWeMjysVg )
 
-Day 9: Deployment and Services types, label and selector matchLables, coredns and DNS table explained, /etc/resolve.conf
-day 10: 
+Day 9: Deployment and Services types, label and selector matchLabels, coredns and DNS table explained, /etc/resolve.conf
+Day 10: port targetport logic, labels - selectors logic , service type: loadbalancer explained
+Day 11: 
