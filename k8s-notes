@@ -268,5 +268,7 @@ Kubernetes Course Recording Notes:
 ( https://drive.google.com/drive/folders/1dDzfahkBp0K8IBKRlP1vuN4jWeMjysVg )
 
 Day 9: Deployment and Services types, label and selector matchLabels, coredns and DNS table explained, /etc/resolve.conf
-Day 10: port targetport logic, labels - selectors logic , service type: loadbalancer explained
+Day 10: port targetport logic, labels - selectors logic, service type: loadbalancer explained
 *Day 11: service type explained deeply, diff betn load balancer and ingress controller, 
+Day 12: headless service type explained, using headless with statefulsets for database hosting on k8s, 
+        headless: f/w traffic to one pod only, and the second pod acts as a replica.
