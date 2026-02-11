@@ -278,5 +278,6 @@ But in clusterIP service, svc do get IP address and that SVC IP Address is liste
 
 Day 13: Ingress Controller not supported.
 
-Day 14: Deployment Explained, kubectl rollout, kubectl annotate, 
+Day 14: Deployment Explained, kubectl rollout history, kubectl annotate deployment (for adding change cause), manual version controlling for k8s, max unavailable & maxsurge,
+Day 15: deployment strategies, 
 
