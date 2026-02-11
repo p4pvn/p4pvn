@@ -275,3 +275,8 @@ Day 10: port targetport logic, labels - selectors logic, service type: loadbalan
 
 Headless service type doesn't get ip address assigned, it only has dns name of svc (svc-name.ns.svc.cluster.local), hence, svc has been listed with all pod IPs in DNS utils (nslookup).
 But in clusterIP service, svc do get IP address and that SVC IP Address is listed with svc's dns name (svc-name.ns.svc.cluster.local)
+
+Day 13: Ingress Controller not supported.
+
+Day 14: Deployment Explained, kubectl rollout, kubectl annotate, 
+
