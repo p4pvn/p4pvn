@@ -227,6 +227,14 @@ Scheduler and Controller Manager read from etcd.
 Kubelet on the target node pulls the pod spec and starts the pod.
 
 
+A MutatingWebhookConfiguration is a Kubernetes admission hook that lets an external server mutate API objects (Pods, Deployments, etc.) at creation/update time. 
+When you kubectl apply a Pod/Deployment, the API server asks registered mutating webhooks (matching rules) if they want to change the object; 
+the webhook returns a JSONPatch and the API server applies it before persisting the object.
+
+It’s how operators and agents (Datadog, OpenTelemetry, Pod Identity Controllers, Istio, etc.) automatically inject 
+sidecars, volumes, env vars, or annotations into pods without you adding them to your Git manifests.
+
+
 
 --------------------------------------------------------------- kubernetes QnA-------------------------------------------------------------------------
 
