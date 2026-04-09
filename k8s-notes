@@ -317,5 +317,5 @@ Day 20: Kubernetes storage host path:
           *Both 19 and 20 explained.
           how to use nfs with kubernetes
 
-Day 22: 
+Day 22: PV and PVC Introduction
          
