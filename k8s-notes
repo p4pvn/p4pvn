@@ -298,9 +298,24 @@ Day 17: Probes explained (startup, readiness and liveliness)
 
 Day 18: multi-container pod: init containers, application container, sidecar container
 
-Day 19: Kubernetes Volume type: ephemeral and persistent, 
-        ephemeral explained in detailed, 
+IMP Directory in node: /var/lib/kubelet
+stores almost everything in kubernetes here in node
+
+Day 19: Kubernetes Volume type: 
+        ephemeral and persistent, 
+        ephemeral explained in detail, emptyDir working, 
+        persistent for container within the pod, but gets vanished with  pod restart
         how node's volume gets mounted to a pod's directory.
 
-Day 20: 
+Day 20: Kubernetes storage host path:
+        token and ca.crt in node's volume explained, 
+        /dev/sda, /dev/sdb, /dev/nvme... → consume DISK storage hence persistent storage
+        tmpfs → consumes RAM (memory), hence ephemeral storage
+        How to use DISK vs. RAM in volume using "medium"
 
+*Day 21: Kubernetes NFS volume: 
+          *Both 19 and 20 explained.
+          how to use nfs with kubernetes
+
+Day 22: 
+         
