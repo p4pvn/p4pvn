@@ -304,18 +304,21 @@ stores almost everything in kubernetes here in node
 Day 19: Kubernetes Volume type: 
         ephemeral and persistent, 
         ephemeral explained in detail, emptyDir working, 
-        persistent for container within the pod, but gets vanished with  pod restart
-        how node's volume gets mounted to a pod's directory.
+        persistent for the container within the pod, but gets vanished with  pod restart
+        How the node's volume gets mounted to a pod's directory.
 
 Day 20: Kubernetes storage host path:
-        token and ca.crt in node's volume explained, 
+        token and ca.crt in the node's volume explained, 
         /dev/sda, /dev/sdb, /dev/nvme... → consume DISK storage hence persistent storage
         tmpfs → consumes RAM (memory), hence ephemeral storage
         How to use DISK vs. RAM in volume using "medium"
 
 *Day 21: Kubernetes NFS volume: 
           *Both 19 and 20 explained.
-          how to use nfs with kubernetes
+          how to use nfs with kubernetes.
+
+Storage class acts as a keyword/selector in PV and PVC. it binds PVC with PV.
+if PVC and PV has same storage class, they are attached, hence PVC will claim from that PV where it is same.
 
 Day 22: PV and PVC Introduction: (CSI driver required for PV, PVC with cloud)
          emptyDir,               hostpath,             nfs volume explained.
@@ -346,3 +349,17 @@ ReadWriteMany (RWX): can read and write by many NODES/PODS.
 ReadWriteOncePod (RWOP): can read and write, but only by one POD.
 
 *Day 25: Dynamic PV / Storage Class Explained:
+It creates PV automatically on request via the provisioner.
+
+Flow:
+Pod spec references PVC
+PVC is created
+StorageClass is selected
+CSI controller/provisioner creates cloud disk
+PV object is created
+PVC binds to PV
+Kubelet on the chosen node mounts the volume
+Pod starts
+
+For eks:
+PVC -> EBS CSI controller -> AWS EBS volume -> PV -> node plugin mounts -> Pod runs
