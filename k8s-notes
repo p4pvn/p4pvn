@@ -317,7 +317,7 @@ Day 20: Kubernetes storage host path:
           *Both 19 and 20 explained.
           how to use nfs with kubernetes
 
-Day 22: PV and PVC Introduction
+Day 22: PV and PVC Introduction: (CSI driver required for PV, PVC with cloud)
          emptyDir,               hostpath,             nfs volume explained.
 (persistent container storage) (pers. node storage), (perst. n/w storage)
 
@@ -338,4 +338,11 @@ Released: just now detached
 Failed: fail to attach
 Bound: attached to resource
 
- 
+Day 24: PV Access mode explained:
+
+ReadWriteOnce (RWO): can read and write by only one NODE. (useful for single-node/volume cluster)
+ReadOnlyMany (ROX): can read only but by many NODES/PODS. ()
+ReadWriteMany (RWX): can read and write by many NODES/PODS.
+ReadWriteOncePod (RWOP): can read and write, but only by one POD.
+
+*Day 25: Dynamic PV / Storage Class Explained:
