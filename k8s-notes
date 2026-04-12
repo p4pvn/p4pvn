@@ -318,4 +318,24 @@ Day 20: Kubernetes storage host path:
           how to use nfs with kubernetes
 
 Day 22: PV and PVC Introduction
-         
+         emptyDir,               hostpath,             nfs volume explained.
+(persistent container storage) (pers. node storage), (perst. n/w storage)
+
+flow explained: Backend Physical Disk - PV - PVCs
+flow in manifest file: pv yaml (where to take disk from) - volume name in deployment yaml - volume mount w folder
+
+Day 23: PV PVCs Practical:
+ACCESS MODES explained:
+Pod uses PVC - PVC bound to PV - PVC deleted
+↓
+PV reclaim policy decides what happens next:
+                                Reclaim policies explained: Retain - PV moves to released state, data remains intact.                                                      
+                                                            delete - PV deleted, data deleted. (default)                                                   
+                                                            recycle - release PV but deletes data (deprecated)
+4 status of PVs:
+Available: ready to attach/bound
+Released: just now detached
+Failed: fail to attach
+Bound: attached to resource
+
+ 
