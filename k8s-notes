@@ -363,3 +363,5 @@ Pod starts
 
 For eks:
 PVC -> EBS CSI controller -> AWS EBS volume -> PV -> node plugin mounts -> Pod runs
+
+Day 26: StatefulSets vs stateless (deployments)
