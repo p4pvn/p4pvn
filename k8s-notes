@@ -370,11 +370,14 @@ Day 37: Taints and Tolerations:
 if a node a taint, it will not schedule any pods at any condition. (except the ones who have the same tolerations)
 
 There are 3 types of taints:
-NoSchedule
-NoExecute
-PreferNoSchedule
+NoSchedule: dont schedule new pods here but keep the old ones running.
+NoExecute: no schedule and also remove existing pods (without tolerations)
+PreferNoSchedule: try not to schedule here, less priority & scoring, but ok even if it gets scheduled.
 
 Master Node has taint by default and hence pods usually dont get scheduled there.
 
-Taint is added on node. kubectl taint node <nodename> key:value:NoSchedule
-Toleration is added on pod.
+Taint is added on node. kubectl taint node <nodename> key=value:NoSchedule
+Toleration is added on pod and toleration should have same key:value pair with same effect.
+
+TolerationSeconds: 60 tolerationseconds allows you to schedule pod in tainted nodes for specific time period. 60 seconds.
+                   after that, pod will be removed from that node and the new pod (from same deployment) gets scheduled. (basically a restart)
