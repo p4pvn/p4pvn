@@ -374,10 +374,15 @@ NoSchedule: dont schedule new pods here but keep the old ones running.
 NoExecute: no schedule and also remove existing pods (without tolerations)
 PreferNoSchedule: try not to schedule here, less priority & scoring, but ok even if it gets scheduled.
 
-Master Node has taint by default and hence pods usually dont get scheduled there.
+Master Node has taint by default, and hence pods usually don't get scheduled there.
 
-Taint is added on node. kubectl taint node <nodename> key=value:NoSchedule
-Toleration is added on pod and toleration should have same key:value pair with same effect.
+Taint is added to node. kubectl taint node <nodename> key=value:NoSchedule
+Toleration is added on pod, and toleration should have same key:value pair with same effect.
 
 TolerationSeconds: 60 tolerationseconds allows you to schedule pod in tainted nodes for specific time period. 60 seconds.
                    after that, pod will be removed from that node and the new pod (from same deployment) gets scheduled. (basically a restart)
+
+Day 38: Cluster Upgrade:
+
+Day39: 
+
