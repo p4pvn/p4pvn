@@ -365,3 +365,16 @@ For eks:
 PVC -> EBS CSI controller -> AWS EBS volume -> PV -> node plugin mounts -> Pod runs
 
 Day 26: StatefulSets vs stateless (deployments)
+
+Day 37: Taints and Tolerations:
+if a node a taint, it will not schedule any pods at any condition. (except the ones who have the same tolerations)
+
+There are 3 types of taints:
+NoSchedule
+NoExecute
+PreferNoSchedule
+
+Master Node has taint by default and hence pods usually dont get scheduled there.
+
+Taint is added on node. kubectl taint node <nodename> key:value:NoSchedule
+Toleration is added on pod.
