@@ -388,7 +388,7 @@ Each pod in a statefulset requires its own PV and PVC (dynamic provisioner can c
 Day 34: Scheduling pod workload on Kubernetes:
 authN → authZ → yaml validation → etcd DB writes → scheduler (kube/cloud)
 Scheduler does filtering and scoring:
-filtering: checks node's health.
+filtering: checks node's health, taints/tolerations and affinity.
 scoring: give scores to healthy nodes.
 
 you can even schedule a pod to the node without scheduler by adding nodeName in yaml file.
@@ -420,7 +420,34 @@ Node affinity is mentioned in the pod YAML to schedule a pod on the node as per 
                   - us-east-1
 
 Day 36: pod affinity and anti-affinity:
+Schedule this pod close to other pods.
 
+# Pod will schedule on the same node where pods with label app=backend
+      requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchExpressions:
+              - key: app
+                operator: In
+                values:
+                  - backend
+          topologyKey: "kubernetes.io/hostname"
+
+# Pod will try to schedule on the same node where pods with label app=backend
+      preferredDuringSchedulingIgnoredDuringExecution:
+        - weight: 1
+          podAffinityTerm:
+            labelSelector:
+              matchExpressions:
+                - key: app
+                  operator: In
+                  values:
+                    - backend
+            topologyKey: "kubernetes.io/hostname"
+
+topologyKey:
+kubernetes.io/hostname → same node
+topology.kubernetes.io/zone → same AZ
+topology.kubernetes.io/region → same region
 
 Day 37: Taints and Tolerations:
 if a node a taint, it will not schedule any pods under any condition. (except the ones who have the same tolerations)
