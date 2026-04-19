@@ -365,9 +365,65 @@ For eks:
 PVC -> EBS CSI controller -> AWS EBS volume -> PV -> node plugin mounts -> Pod runs
 
 Day 26: StatefulSets vs stateless (deployments)
+Stateful systems remember previous client interactions (session data), 
+Stateless systems treat every request independently, storing no context between requests.
+
+stateful → DB where you need active, passive, i.e. primary, replica
+stateless → backend
+
+Deployment creates all pods at once, with random UIDs.
+Statefulset creates one pod first, then -2, -3, -4 etc.
+and at the time of removal or scaling down, it will remove the last one first, like that, -4 -3 -2 -1..
+
+Service type to be used with statefulset is HEADLESS.
+Other services in k8s has stable virtual IP (elastic), so pod restart will not affect the traffic flow.
+HEADLESS, on the other hand, has NO stable virtual IP. it doesnt do load balance across pod instead it returns pod's IP.
+(if you do nslookup to service name, it will return IPs of all Pods).
+spec:
+  clusterIP: None
+
+Each pod in a statefulset requires its own PV and PVC (dynamic provisioner can create PV automatically)
+(pod volume should have read and write access mode).
+
+Day 34: Scheduling pod workload on Kubernetes:
+authN → authZ → yaml validation → etcd DB writes → scheduler (kube/cloud)
+Scheduler does filtering and scoring:
+filtering: checks node's health.
+scoring: give scores to healthy nodes.
+
+you can even schedule a pod to the node without scheduler by adding nodeName in yaml file.
+you can also use nodeselector, which will schedule the pod according to key and label.
+
+Day 35: node affinity and anti-affinity:
+Node affinity is mentioned in the pod YAML to schedule a pod on the node as per labels (key: value)
+
+  affinity:
+    nodeAffinity:
+
+# get schedule where label is disktype = ssd
+      requiredDuringSchedulingIgnoredDuringExecution: (must have condition, dont remove already scheduled pods)
+        nodeSelectorTerms: (selector)
+          - matchExpressions: (condition)
+              - key: disktype 
+                operator: In (equals to ; NotIn - not equals to) 
+                values:
+                  - ssd (value)
+
+#try to schedule where region = us-east-1
+      preferredDuringSchedulingIgnoredDuringExecution:
+        - weight: 1 (weight is required whenever you give preferred, ranges from 1 to 100)
+          preference:
+            matchExpressions:
+              - key: region
+                operator: In
+                values:
+                  - us-east-1
+
+Day 36: pod affinity and anti-affinity:
+
 
 Day 37: Taints and Tolerations:
-if a node a taint, it will not schedule any pods at any condition. (except the ones who have the same tolerations)
+if a node a taint, it will not schedule any pods under any condition. (except the ones who have the same tolerations)
 
 There are 3 types of taints:
 NoSchedule: dont schedule new pods here but keep the old ones running.
