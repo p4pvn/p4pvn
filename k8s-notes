@@ -295,6 +295,30 @@ Day 15: deployment strategies, 1. blue/green deployment you change the labels & 
 day 16: job cj daemonset
 
 Day 17: Probes explained (startup, readiness and liveliness)
+1) readinessProbe
+Checks whether the container is ready to receive traffic.
+If it fails, the pod stays running but is removed from Service endpoints.
+
+2) livenessProbe
+Checks whether the container is still healthy/alive.
+If it keeps failing, Kubernetes restarts the container.
+
+3) startupProbe
+Checks whether the application has finished starting up.
+While this probe is failing, Kubernetes does not run liveness/readiness failures against the container.
+
+httpGet: Uses an HTTP/HTTPS request to check app health.
+port: The container port where the health endpoint is exposed.
+path: /actuator/health/readiness (The exact URL path to hit for the probe)
+
+initialDelaySeconds: 50
+Waits 50 seconds before running the first probe. Useful when the app needs time to boot before it can respond.
+periodSeconds: 20
+Runs the probe every 20 seconds. 
+failureThreshold: 5
+Marks the probe as failed only after 5 consecutive failures. Higher values make the probe more tolerant to temporary issues.
+timeoutSeconds: 5
+Waits up to 5 seconds for the probe response. If the app does not respond in time, that attempt is counted as a failure.
 
 Day 18: multi-container pod: init containers, application container, sidecar container
 
