@@ -313,7 +313,7 @@ sed -n '15p' docs.txt                  -print line number 15
 sed -n 'x,yp' abc.txt
 head -n y abc.txt | tail +x
 
-16. Grep command (used for searching lines)
+16. Grep command (used for searching word (in a line))
 grep options argument filename
 grep -ino "pawan" tmp  -pawan in tmp file (i -ignore case, n  -line number and o -onlyword)
 grep -in '^pawan' tmp   -lines where pawan is at start
@@ -324,6 +324,7 @@ grep -A 4 "pawan" tmp      -pawan with next 4 lines After
 grep -B 4 "pawan" tmp      -pawan with before 4 lines
 grep -C 4 "pawan" tmp      -pawan with After & Before 4 lines
 egrep -in "pawan|soni|vijaya" tmp  -enhanced grep for multiple search
+grep -ine "pawan|soni" tmp - egrep has been deprecated, you can use -e
 grep -in 'Aug 24 08:51' tmp   -search for logs 24th Aug @ 8:51 AM (24hr)
 grep -oP '.{4}pawan.{4}'    - it will print 4 words before and 4 words after argument.
 
@@ -340,7 +341,7 @@ find /path/to/search -perm /o=r             #find files with given permission (r
 find /path/to/search -empty -delete         #find all empty files and delete it.
 
 
-cut command: It is used to extract specific columns or fields from lines of text in a file.
+cut command: It extracts specific columns or fields from lines of text in a file.
 cut -f 1,3 input.txt          #Extracts fields/columns 1 and 3 from input.txt
 cut -f 2-4 input.txt          # Extracts fields/columns 2 to 4 from input.txt
 cut -d ',' -f 1,3 input.csv   # Extracts fields/columns 1 and 3 from a CSV file using a comma as the delimiter/seperator.
