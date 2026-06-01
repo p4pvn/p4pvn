@@ -678,15 +678,15 @@ Last IP → Broadcast address (not usable).
 
 # AWS VPC Networking (special rules):
 AWS reserves 5 IP addresses in every subnet, regardless of size:
-> Network address → 1st IP (e.g. 100.117.95.64)
+> Network address → 1st IP (e.g. 100.117.95.1)
   Identifies the subnet itself.
-> VPC router/gateway → 2nd IP (e.g. 100.117.95.65)
+> VPC router/gateway → 2nd IP (e.g. 100.117.95.2)
   Always used as the default gateway for instances.
-> Reserved for AWS mapping → 3rd IP (e.g. 100.117.95.66)
+> Reserved for AWS mapping → 3rd IP (e.g. 100.117.95.3)
   AWS keeps it for internal purposes.
-> Reserved for AWS DNS → 4th IP (e.g. 100.117.95.67)
+> Reserved for AWS DNS → 4th IP (e.g. 100.117.95.4)
   Used for Amazon DNS in the subnet.
-> Broadcast address → Last IP (e.g. 100.117.95.127)
+> Broadcast address → Last IP (e.g. 100.117.95.255)
   Even though AWS does not support broadcast, this IP is still reserved.
 
 https://chatgpt.com/s/t_68de444b8f888191a2271d2d46e72b52
