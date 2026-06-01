@@ -459,8 +459,7 @@ default permission if normal user created directory: 775
 default permission if normal user created file: 664
 
 26. Permission management lab:
-chmod is change mode. it is used to give permission from root to
-other/group.
+chmod is change mode. it is used to give permission (from root to other/group.)
 chmod u+x /tmp  :added executed permission to user/owner
 chmod o-x /tmp  :removed execute permission for others to file tmp
 chmod g+w /tmp  :write permission given to group to file tmp
