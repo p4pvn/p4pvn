@@ -383,6 +383,11 @@ set -o history
 each process has  PID,        PPID,      State,   Owner,   Priority/Nice value,    Resources
                 process ID, parent PID, running,  user,     number                 CPU, Memory
                                         sleep, stop, zombie, orphan
+
+A lower nice value means higher priority (less "nice" to other processes), 
+while a higher nice value means lower priority (more "nice" and willing to share CPU time)
+ranges from -20 to 19.
+										
 types of process:
 foreground process: blocks the terminal like top, vi, watch
 Background process: runs in background with detached terminal (with & in end) like sleep 60 &
