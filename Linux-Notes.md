@@ -899,7 +899,7 @@ Following these steps should enable your CentOS machine to send emails using you
 49. SSH (Secure Shell:22):
 
 ssh -i ~/.ssh/id_rsa -p 2222 -v ec2-user@192.168.1.100 "uptime"
--i : for attaching keys
+-i : for attaching keys (identity)
 -p : ssh port of the server
 -v : verbose for debugging
 you can also add command under "command" and it will get executed.
