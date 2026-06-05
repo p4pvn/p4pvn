@@ -473,6 +473,9 @@ kubernetes.io/hostname → same node
 topology.kubernetes.io/zone → same AZ
 topology.kubernetes.io/region → same region
 
+pod anti affinity: (used for to not place same replicas in 1 node)
+Try not to place this pod on a node (or zone) where matching pods already exist.
+
 Day 37: Taints and Tolerations:
 if a node a taint, it will not schedule any pods under any condition. (except the ones who have the same tolerations)
 
