@@ -496,3 +496,53 @@ Day 38: Cluster Upgrade:
 
 Day39: 
 
+POD LIFECYCLE:
+
+                kubectl apply
+                     |
+                     v
+            +-------------------+
+            |  Pod object       |
+            |  created in API   |
+            +-------------------+
+                     |
+                     v
+              PodScheduled ?
+             /               \
+           No                 Yes
+           |                   |
+           v                   v
+   Pending / Unschedulable   Kubelet sees pod
+                               on chosen node
+                                     |
+                                     v
+                           Pod sandbox / network
+                           volume setup / image pull
+                                     |
+                                     v
+                           ContainerCreating
+                               /       \
+                              /         \
+                             v           v
+                    container starts   error here
+                             |
+                             v
+                       Running
+                        /   \
+                       /     \
+                      v       v
+                  Ready     Not Ready
+                      |
+                      v
+              app serves traffic
+                      |
+          +-----------+-----------+
+          |                       |
+          v                       v
+   process exits normally   process exits with error
+          |                       |
+          v                       v
+     Succeeded               Failed / CrashLoopBackOff
+          |
+          v
+      Terminated
