@@ -1485,6 +1485,18 @@ https://chatgpt.com/s/t_6903a2afdf848191bc369a36ad3fadf5
 
 https://chatgpt.com/s/t_69046d9e067c81918da19176e9b3279d
 
+Auth0 Notes:
+Types of application:
+<img width="545" height="542" alt="image" src="https://github.com/user-attachments/assets/5894c9df-3f34-4f96-b2ba-c8c437737d40" />
+
+
+
+For your M2M app: grant only Client Access scopes that your backend actually needs.
+For browser/user login flows: use User-Delegated Access scopes, because those tokens are issued on the user’s behalf.
+
+A client-access / M2M token is for a service calling your API as itself, while a user-delegated token is for an app calling an API on behalf of a signed-in user
+
+
 -------------------------------------------------------------JAVA ENVIRONMENT GUIDE-----------------------------------------------------------------
 https://chatgpt.com/share/6905c9c1-ffb4-8012-89e2-3137a52d2b31
 
